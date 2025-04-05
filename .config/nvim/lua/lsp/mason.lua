@@ -4,7 +4,7 @@ return {
     ----------------------------------------------
     {
         "williamboman/mason.nvim",
-        cmd = { "Mason", "MasonInstall" },
+        cmd = { "Mason", "MasonInstall", "MasonUpdate"},
         config = function()
             require("mason").setup({
                 ui = {
@@ -23,6 +23,7 @@ return {
     ----------------------------------------------
     {
         "williamboman/mason-lspconfig.nvim",
+        -- 这个不能加延时，因为其他模块对这个有依赖，这个应该是需要第一时间加载
         dependencies = { "williamboman/mason.nvim" },
 
         -- 仅在有网时更新

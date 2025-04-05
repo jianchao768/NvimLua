@@ -4,7 +4,7 @@ return {
     ------------------------------------------
     --- BUG:打开后，会使配的这个功能失效：当nvim-tree是最后一个窗口时，自动退出
     "j-hui/fidget.nvim",
-    tag = "legacy", -- 兼容旧版配置，如果用 Neovim 0.10+ 可以去掉
+    event = "VeryLazy",
     config = function()
         require("fidget").setup({
             integration = {

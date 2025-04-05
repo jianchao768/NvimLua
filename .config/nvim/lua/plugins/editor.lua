@@ -4,6 +4,7 @@ return {
         --- 括号自动补全 ---
         --------------------
         "windwp/nvim-autopairs",
+        event = "InsertEnter",
         config = function()
             require("nvim-autopairs").setup({
                 check_ts = true,  -- 启用 Treesitter 进行更智能的匹配

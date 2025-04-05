@@ -3,6 +3,7 @@ return {
     --- Neovim Git集成插件，在nvim中提供git状态 ---
     -----------------------------------------------
     "lewis6991/gitsigns.nvim",
+    event = {"BufReadPre"},
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {
         signs = {

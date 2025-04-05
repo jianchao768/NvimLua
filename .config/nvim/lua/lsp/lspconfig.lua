@@ -96,6 +96,7 @@ return {
         -- nvim-lspconfig UI 增强 (可选) --
         -----------------------------------
         "nvimdev/lspsaga.nvim",
+        event = "LspAttach",
         config = function()
             require("lspsaga").setup({
                 lightbulb = {

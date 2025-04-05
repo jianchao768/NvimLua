@@ -3,11 +3,12 @@ return {
     ---  自动补全插件  ---
     ----------------------
     "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
     dependencies = {
-        "hrsh7th/cmp-nvim-lsp",  -- LSP源
-        "hrsh7th/cmp-buffer",    -- Buffer 源
-        "hrsh7th/cmp-path",      -- 路径补全
-        "hrsh7th/cmp-cmdline",   -- 命令行补全
+        {"hrsh7th/cmp-nvim-lsp", event = "InsertEnter"}, -- LSP源
+        {"hrsh7th/cmp-buffer", event = "InsertEnter"},   -- Buffer 源
+        {"hrsh7th/cmp-path", event = "InsertEnter" },    -- 路径补全
+        {"hrsh7th/cmp-cmdline", event = "CmdlineEnter"},  -- 命令行补全
         --"saadparwaiz1/cmp_luasnip", -- Snippets 源
         --"L3MON4D3/LuaSnip",         -- Snippets 引擎
     },
