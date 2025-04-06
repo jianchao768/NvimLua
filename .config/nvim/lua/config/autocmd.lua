@@ -20,6 +20,14 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 --
 --})
 
+-- 右侧参考线
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "c", "cpp", "lua", "python" },
+  callback = function()
+    vim.wo.colorcolumn = "100"
+  end,
+})
+
 -- 当 nvim-tree 是最后一个窗口时自动关闭
 --vim.api.nvim_create_autocmd("BufEnter", {
 --  nested = true,

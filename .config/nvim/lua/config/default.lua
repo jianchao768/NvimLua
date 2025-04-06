@@ -4,6 +4,8 @@ vim.o.ttyfast = true      -- 提高终端输入响应速度
 vim.o.autochdir = false   -- 是否自动切换工作目录为当前文件所在目录
 vim.o.exrc = true         -- 允许加载当前目录的 `.nvimrc` 或 `.exrc`
 vim.o.secure = false      -- 允许 `.exrc` 执行某些命令
+vim.o.autoread = true     -- 文件被外部修改后，自动加载
+vim.bo.autoread = true
 
 vim.opt.tabstop = 4       -- Tab 显示的空格数
 vim.opt.shiftwidth = 4    -- 自动缩进的空格数
@@ -21,6 +23,9 @@ vim.wo.wrap = false       -- 默认禁用换行
 vim.o.scrolloff = 4  -- 光标上下留 4 行缓冲
 vim.opt.mouse = "a" -- 启用鼠标支持
 
+-- 搜索大小写不敏感
+vim.o.ignorecase = true
+vim.o.smartcase = true
 
 -- 文件类型检测
 vim.cmd("filetype plugin indent on")
