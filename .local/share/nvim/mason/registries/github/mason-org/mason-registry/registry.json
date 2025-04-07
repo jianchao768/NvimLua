@@ -1667,7 +1667,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:pypi/cfn-lint@1.32.3"
+      "id": "pkg:pypi/cfn-lint@1.32.4"
     },
     "bin": {
       "cfn-lint": "pypi:cfn-lint"
@@ -2552,7 +2552,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:npm/%40github/copilot-language-server@1.296.0"
+      "id": "pkg:npm/%40github/copilot-language-server@1.297.0"
     },
     "bin": {
       "copilot-language-server": "npm:copilot-language-server"
@@ -3088,7 +3088,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:npm/%40neo4j-cypher/language-server@2.0.0-next.18"
+      "id": "pkg:npm/%40neo4j-cypher/language-server@2.0.0-next.19"
     },
     "bin": {
       "cypher-language-server": "npm:cypher-language-server"
@@ -3238,7 +3238,7 @@
       "Runtime"
     ],
     "source": {
-      "id": "pkg:github/denoland/deno@v2.2.6",
+      "id": "pkg:github/denoland/deno@v2.2.8",
       "asset": [
         {
           "target": "darwin_arm64",
@@ -4194,7 +4194,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:github/CppCXY/emmylua-analyzer-rust@0.6.0",
+      "id": "pkg:github/CppCXY/emmylua-analyzer-rust@0.7.0",
       "asset": [
         {
           "target": "darwin_arm64",
@@ -6120,7 +6120,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:github/elijah-potter/harper@v0.27.0",
+      "id": "pkg:github/elijah-potter/harper@v0.28.0",
       "asset": [
         {
           "target": "linux_x64_gnu",
@@ -7233,7 +7233,7 @@
       "Formatter"
     ],
     "source": {
-      "id": "pkg:pypi/jupytext@1.16.7"
+      "id": "pkg:pypi/jupytext@1.17.0"
     },
     "bin": {
       "jupytext": "pypi:jupytext"
@@ -7832,7 +7832,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:github/ltex-plus/ltex-ls-plus@18.4.0",
+      "id": "pkg:github/ltex-plus/ltex-ls-plus@18.5.0",
       "asset": [
         {
           "target": "linux_arm64_gnu",
@@ -7967,7 +7967,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:github/LuaLS/lua-language-server@3.13.9",
+      "id": "pkg:github/LuaLS/lua-language-server@3.14.0",
       "asset": [
         {
           "target": "darwin_arm64",
@@ -8131,7 +8131,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:github/JohnnyMorganz/luau-lsp@1.42.0",
+      "id": "pkg:github/JohnnyMorganz/luau-lsp@1.42.1",
       "asset": [
         {
           "target": [
@@ -8449,7 +8449,7 @@
       "Formatter"
     ],
     "source": {
-      "id": "pkg:cargo/mdsf@0.8.4"
+      "id": "pkg:cargo/mdsf@0.8.5"
     },
     "bin": {
       "mdsf": "cargo:mdsf"
@@ -9254,7 +9254,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:npm/%40nomicfoundation/solidity-language-server@0.8.17"
+      "id": "pkg:npm/%40nomicfoundation/solidity-language-server@0.8.18"
     },
     "schemas": {
       "lsp": "vscode:https://raw.githubusercontent.com/NomicFoundation/hardhat-vscode/v{{version}}/client/package.json"
@@ -9282,6 +9282,54 @@
     },
     "bin": {
       "npm-groovy-lint": "npm:npm-groovy-lint"
+    }
+  },
+  {
+    "name": "ntt",
+    "description": "Modern tools for TTCN-3",
+    "homepage": "https://nokia.github.io/ntt/",
+    "licenses": [
+      "BSD-3-Clause"
+    ],
+    "languages": [
+      "TTCN-3"
+    ],
+    "categories": [
+      "LSP",
+      "Runtime"
+    ],
+    "source": {
+      "id": "pkg:github/nokia/ntt@v0.19.1",
+      "asset": [
+        {
+          "target": "darwin_arm64",
+          "file": "ntt_darwin_arm64.tar.gz",
+          "bin": "ntt"
+        },
+        {
+          "target": "darwin_x64",
+          "file": "ntt_darwin_x86_64.tar.gz",
+          "bin": "ntt"
+        },
+        {
+          "target": "linux_arm64",
+          "file": "ntt_linux_arm64.tar.gz",
+          "bin": "ntt"
+        },
+        {
+          "target": "linux_x64",
+          "file": "ntt_linux_x86_64.tar.gz",
+          "bin": "ntt"
+        },
+        {
+          "target": "win_x64",
+          "file": "ntt_windows_x86_64.zip",
+          "bin": "ntt.exe"
+        }
+      ]
+    },
+    "bin": {
+      "ntt": "{{source.asset.bin}}"
     }
   },
   {
@@ -9751,7 +9799,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:npm/oxlint@0.16.4"
+      "id": "pkg:npm/oxlint@0.16.5"
     },
     "schemas": {
       "lsp": "vscode:https://raw.githubusercontent.com/oxc-project/oxc/oxlint_v{{version}}/editors/vscode/package.json"
@@ -9851,6 +9899,30 @@
     }
   },
   {
+    "name": "pgformatter",
+    "description": "PostgreSQL SQL syntax beautifier",
+    "homepage": "http://sqlformat.darold.net",
+    "licenses": [
+      "PostgreSQL"
+    ],
+    "languages": [
+      "Postgres",
+      "SQL"
+    ],
+    "categories": [
+      "Formatter"
+    ],
+    "source": {
+      "id": "pkg:github/darold/pgformatter@v5.6",
+      "build": {
+        "run": ""
+      }
+    },
+    "bin": {
+      "pg_format": "pg_format"
+    }
+  },
+  {
     "name": "php-cs-fixer",
     "description": "The PHP Coding Standards Fixer (PHP CS Fixer) tool fixes your code to follow standards; whether you want to follow PHP\ncoding standards as defined in the PSR-1, PSR-2, etc., or other community driven ones like the Symfony one. You can\nalso define your (team's) style through configuration.\n",
     "homepage": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer",
@@ -9933,7 +10005,7 @@
       "Formatter"
     ],
     "source": {
-      "id": "pkg:github/PHPCSStandards/PHP_CodeSniffer@3.12.0",
+      "id": "pkg:github/PHPCSStandards/PHP_CodeSniffer@3.12.1",
       "asset": {
         "file": "phpcbf.phar"
       }
@@ -9956,7 +10028,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:github/PHPCSStandards/PHP_CodeSniffer@3.12.0",
+      "id": "pkg:github/PHPCSStandards/PHP_CodeSniffer@3.12.1",
       "asset": {
         "file": "phpcs.phar"
       }
@@ -10124,7 +10196,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:github/supabase-community/postgres-language-server@0.3.0",
+      "id": "pkg:github/supabase-community/postgres-language-server@0.3.1",
       "asset": [
         {
           "target": "darwin_arm64",
@@ -11667,7 +11739,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:pypi/ruff@0.11.3"
+      "id": "pkg:pypi/ruff@0.11.4"
     },
     "bin": {
       "ruff": "pypi:ruff"
@@ -11708,7 +11780,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:github/rust-lang/rust-analyzer@2025-03-31",
+      "id": "pkg:github/rust-lang/rust-analyzer@2025-04-07",
       "asset": [
         {
           "target": "linux_x64_gnu",
@@ -12702,7 +12774,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:npm/some-sass-language-server@2.1.1"
+      "id": "pkg:npm/some-sass-language-server@2.1.2"
     },
     "schemas": {
       "lsp": "vscode:https://raw.githubusercontent.com/wkillerud/some-sass/some-sass-language-server@{{version}}/vscode-extension/package.json"
@@ -12773,7 +12845,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:gem/sorbet@0.5.11987",
+      "id": "pkg:gem/sorbet@0.5.11989",
       "supported_platforms": [
         "unix"
       ]
@@ -12997,10 +13069,37 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:cargo/sqruff@0.25.24"
+      "id": "pkg:github/quarylabs/sqruff@v0.25.25",
+      "asset": [
+        {
+          "target": "linux_x64",
+          "file": "sqruff-linux-x86_64-musl.tar.gz",
+          "bin": "sqruff"
+        },
+        {
+          "target": "linux_arm64",
+          "file": "sqruff-linux-aarch64-musl.tar.gz",
+          "bin": "sqruff"
+        },
+        {
+          "target": "win_x64",
+          "file": "sqruff-windows-x86_64.zip",
+          "bin": "sqruff.exe"
+        },
+        {
+          "target": "darwin_x64",
+          "file": "sqruff-darwin-x86_64.tar.gz",
+          "bin": "sqruff"
+        },
+        {
+          "target": "darwin_arm64",
+          "file": "sqruff-darwin-aarch64.tar.gz",
+          "bin": "sqruff"
+        }
+      ]
     },
     "bin": {
-      "sqruff": "cargo:sqruff"
+      "sqruff": "{{source.asset.bin}}"
     }
   },
   {
@@ -13229,7 +13328,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:npm/stylelint@16.17.0"
+      "id": "pkg:npm/stylelint@16.18.0"
     },
     "bin": {
       "stylelint": "npm:stylelint"
@@ -13541,7 +13640,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:github/realm/SwiftLint@0.58.2",
+      "id": "pkg:github/realm/SwiftLint@0.59.0",
       "asset": [
         {
           "target": "linux_x64_gnu",
@@ -14266,7 +14365,7 @@
       "LSP"
     ],
     "source": {
-      "id": "pkg:github/tilt-dev/tilt@v0.34.0",
+      "id": "pkg:github/tilt-dev/tilt@v0.34.1",
       "asset": [
         {
           "target": "darwin_arm64",
@@ -14515,7 +14614,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:github/trufflesecurity/trufflehog@v3.88.22",
+      "id": "pkg:github/trufflesecurity/trufflehog@v3.88.23",
       "asset": [
         {
           "target": "darwin_x64",
@@ -15268,7 +15367,7 @@
       "Linter"
     ],
     "source": {
-      "id": "pkg:github/errata-ai/vale@v3.11.1",
+      "id": "pkg:github/errata-ai/vale@v3.11.2",
       "asset": [
         {
           "target": "darwin_x64",
@@ -15726,6 +15825,50 @@
     },
     "bin": {
       "vulture": "pypi:vulture"
+    }
+  },
+  {
+    "name": "wasm-language-tools",
+    "description": "Language server and other tools for WebAssembly.",
+    "homepage": "https://github.com/g-plane/wasm-language-tools",
+    "licenses": [
+      "MIT"
+    ],
+    "languages": [
+      "WebAssembly"
+    ],
+    "categories": [
+      "LSP",
+      "Formatter",
+      "Linter"
+    ],
+    "source": {
+      "id": "pkg:github/g-plane/wasm-language-tools@v0.4.0",
+      "asset": [
+        {
+          "target": "darwin_arm64",
+          "file": "wat_server-arm64-macos.zip",
+          "bin": "wat_server"
+        },
+        {
+          "target": "darwin_x64",
+          "file": "wat_server-x86_64-macos.zip",
+          "bin": "wat_server"
+        },
+        {
+          "target": "linux_x64",
+          "file": "wat_server-x86_64-linux.zip",
+          "bin": "wat_server"
+        },
+        {
+          "target": "win_x64",
+          "file": "wat_server-x86_64-windows.zip",
+          "bin": "wat_server.exe"
+        }
+      ]
+    },
+    "bin": {
+      "wat_server": "{{source.asset.bin}}"
     }
   },
   {

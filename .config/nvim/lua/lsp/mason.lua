@@ -27,13 +27,13 @@ return {
         dependencies = { "williamboman/mason.nvim" },
 
         -- 仅在有网时更新
-        build = function()
-            local is_nvim = vim.fn.has("nvim") == 1
-            local has_internet = vim.fn.systemlist("ping -c 1 google.com 2>/dev/null | grep -E '1 received|1 packets received'")[1] ~= nil
-            if is_nvim and has_internet then
-                vim.cmd("MasonUpdate")
-            end
-        end,
+        --build = function()
+        --    local is_nvim = vim.fn.has("nvim") == 1
+        --    local has_internet = vim.fn.systemlist("ping -c 1 google.com 2>/dev/null | grep -E '1 received|1 packets received'")[1] ~= nil
+        --    if is_nvim and has_internet then
+        --        vim.cmd("MasonUpdate")
+        --    end
+        --end,
 
         config = function()
             require("mason-lspconfig").setup({

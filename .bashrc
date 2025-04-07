@@ -117,18 +117,11 @@ if ! shopt -oq posix; then
 fi
 
 ######################################################################
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-
 #nvim ----------
-export PATH=~/.config/nvim/lib/nvim-linux-x86_64/lib/:${PATH}
-export PATH=~/.config/nvim/lib/nvim-linux-x86_64/bin/:${PATH}
-#export PATH=~/.config/nvim/lib/node-v20.12.0-linux-x64/lib/:${PATH}
-#export PATH=~/.config/nvim/lib/node-v20.12.0-linux-x64/bin/:${PATH}
-#export PATH=~/Downloads/clangd-llvm/clang+llvm-17.0.6-x86_64-linux-gnu-ubuntu-22.04/bin/:${PATH}
-#export PATH=~/Downloads/nvim-linux-arm64/bin/:${PATH}
+export PATH=~/.config/nvim/lib/nvim-build-v0.11/lib/:${PATH}
+export PATH=~/.config/nvim/lib/nvim-build-v0.11/bin/:${PATH}
 
-# FZF
+#FZF
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border"
 
@@ -136,7 +129,8 @@ export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border"
 export PATH=~/.config/nvim/lib/ripgrep-14.1.1-x86_64-unknown-linux-musl/:${PATH}
 #Fd
 export PATH=~/.config/nvim/lib/fd-v10.2.0-x86_64-unknown-linux-gnu/:${PATH}
-
+#bat 
+export PATH=~/.config/nvim/lib/bat-v0.25.0-x86_64-unknown-linux-gnu/:${PATH}
 
 #key-bind
 alias vi='nvim'
@@ -153,3 +147,7 @@ alias gb='git branch'
 alias gl='git log'
 alias gll='git log --oneline'
 
+
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

@@ -1,14 +1,14 @@
-[20:23:33.870][info] [#0:/home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/main.lua:68]: Lua Lsp startup, root: 	/home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec
-[20:23:33.870][info] [#0:/home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/main.lua:69]: ROOT:	/home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec
-[20:23:33.870][info] [#0:/home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/main.lua:70]: LOGPATH:	/home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/log
-[20:23:33.870][info] [#0:/home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/main.lua:71]: METAPATH:	/home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta
-[20:23:33.870][info] [#0:/home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/main.lua:72]: VERSION:	3.13.9
-[20:23:33.889][info] [#0:script/proto/proto.lua:260]: Listen Mode: stdio
-[20:23:33.889][info] [#0:script/service/service.lua:145]: 
+[01:36:56.958][info] [#0:/home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/main.lua:68]: Lua Lsp startup, root: 	/home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec
+[01:36:56.958][info] [#0:/home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/main.lua:69]: ROOT:	/home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec
+[01:36:56.958][info] [#0:/home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/main.lua:70]: LOGPATH:	/home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/log
+[01:36:56.958][info] [#0:/home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/main.lua:71]: METAPATH:	/home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta
+[01:36:56.958][info] [#0:/home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/main.lua:72]: VERSION:	3.14.0
+[01:36:56.983][info] [#0:script/proto/proto.lua:260]: Listen Mode: stdio
+[01:36:56.983][info] [#0:script/service/service.lua:145]: 
 ========= Medical Examination Report =========
     --------------- Memory ---------------
-        Total: 2.257 MB
-        # 00 : 2.257 MB
+        Total: 2.263 MB
+        # 00 : 2.263 MB
         # 01 : 0.000 MB
         # 02 : 0.000 MB
         # 03 : 0.000 MB
@@ -26,7 +26,7 @@
         Holdon:   0
         Waiting:  0
 ==============================================
-[20:23:34.095][info] [#0:script/client.lua:657]: Client init	{
+[01:36:57.088][info] [#0:script/client.lua:657]: Client init	{
   capabilities = {
     general = {
       positionEncodings = { "utf-8", "utf-16", "utf-32" }
@@ -215,20 +215,398 @@
   },
   clientInfo = {
     name = "Neovim",
-    version = "0.11.0+ga99c469e54"
+    version = "0.11.1-dev+g6e51d39696"
   },
   initializationOptions = {},
-  processId = 86646,
-  rootPath = "/home/ljc/.config/nvim",
-  rootUri = "file:///home/ljc/.config/nvim",
+  processId = 44709,
   trace = "off",
-  workDoneToken = "1",
-  workspaceFolders = { {
-      name = "/home/ljc/.config/nvim",
-      uri = "file:///home/ljc/.config/nvim"
-    } }
+  workDoneToken = "1"
 }
-[20:23:34.095][info] [#0:script/language.lua:137]: VSC language: nil
-[20:23:34.095][info] [#0:script/language.lua:138]: LS  language: en-us
-[20:23:34.095][info] [#0:script/workspace/workspace.lua:38]: Workspace init root: 	file:///home/ljc/.config/nvim
-[20:23:34.095][info] [#0:script/workspace/workspace.lua:42]: Log path: 	/home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/log/file_home_ljc_.config_nvim.log
+[01:36:57.088][info] [#0:script/language.lua:137]: VSC language: nil
+[01:36:57.088][info] [#0:script/language.lua:138]: LS  language: en-us
+[01:36:57.338][info] [#0:script/workspace/workspace.lua:48]: Workspace create: 	file:///home/ljc/.config/nvim/lua/plugins
+[01:36:57.439][info] [#0:script/provider/provider.lua:65]: Load config from client	fallback
+[01:36:57.439][info] [#0:script/provider/provider.lua:66]: {
+  Lua = {
+    diagnostics = {
+      disable = { "lowercase-global" },
+      globals = { "vim" }
+    },
+    runtime = {
+      version = "LuaJIT"
+    },
+    telemetry = {
+      enable = false
+    },
+    workspace = {
+      checkThirdParty = false,
+      ignoreDir = { ".git", "node_modules", "lib", "meta", "Nvim-lua-4.4", "build", ".cache" },
+      library = false,
+      maxPreload = 5000,
+      preloadFileSize = 500,
+      propmt = false
+    }
+  }
+}
+[01:36:57.439][info] [#0:script/provider/provider.lua:65]: Load config from client	fallback
+[01:36:57.440][info] [#0:script/provider/provider.lua:66]: {
+  Lua = {
+    diagnostics = {
+      disable = { "lowercase-global" },
+      globals = { "vim" }
+    },
+    runtime = {
+      version = "LuaJIT"
+    },
+    telemetry = {
+      enable = false
+    },
+    workspace = {
+      checkThirdParty = false,
+      ignoreDir = { ".git", "node_modules", "lib", "meta", "Nvim-lua-4.4", "build", ".cache" },
+      library = false,
+      maxPreload = 5000,
+      preloadFileSize = 500,
+      propmt = false
+    }
+  }
+}
+[01:36:57.440][info] [#0:script/provider/provider.lua:49]: Load config from client	file:///home/ljc/.config/nvim/lua/plugins
+[01:36:57.440][info] [#0:script/provider/provider.lua:50]: {
+  Lua = {
+    diagnostics = {
+      disable = { "lowercase-global" },
+      globals = { "vim" }
+    },
+    runtime = {
+      version = "LuaJIT"
+    },
+    telemetry = {
+      enable = false
+    },
+    workspace = {
+      checkThirdParty = false,
+      ignoreDir = { ".git", "node_modules", "lib", "meta", "Nvim-lua-4.4", "build", ".cache" },
+      library = false,
+      maxPreload = 5000,
+      preloadFileSize = 500,
+      propmt = false
+    }
+  }
+}
+[01:36:57.555][info] [#0:script/library.lua:212]: Init builtin library at:	nil
+[01:36:57.570][info] [#0:script/provider/provider.lua:65]: Load config from client	fallback
+[01:36:57.570][info] [#0:script/provider/provider.lua:66]: {
+  Lua = {
+    diagnostics = {
+      disable = { "lowercase-global" },
+      globals = { "vim" }
+    },
+    runtime = {
+      version = "LuaJIT"
+    },
+    telemetry = {
+      enable = false
+    },
+    workspace = {
+      checkThirdParty = false,
+      ignoreDir = { ".git", "node_modules", "lib", "meta", "Nvim-lua-4.4", "build", ".cache" },
+      library = false,
+      maxPreload = 5000,
+      preloadFileSize = 500,
+      propmt = false
+    }
+  }
+}
+[01:36:57.674][info] [#0:script/workspace/workspace.lua:324]: Preload start:	<fallback>
+[01:36:57.676][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit/profile.lua
+[01:36:57.676][info] [#0:script/library.lua:212]: Init builtin library at:	file:///home/ljc/.config/nvim/lua/plugins
+[01:36:57.685][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/table/clear.lua
+[01:36:57.688][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/table/new.lua
+[01:36:57.689][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/math.lua
+[01:36:57.690][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/bit.lua
+[01:36:57.691][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/string.lua
+[01:36:57.692][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/builtin.lua
+[01:36:57.693][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/coroutine.lua
+[01:36:57.694][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/ffi.lua
+[01:36:57.695][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit.lua
+[01:36:57.696][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit/util.lua
+[01:36:57.697][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/debug.lua
+[01:36:57.697][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/string/buffer.lua
+[01:36:57.698][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/basic.lua
+[01:36:57.699][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/io.lua
+[01:36:57.699][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/package.lua
+[01:36:57.699][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/os.lua
+[01:36:57.700][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/table.lua
+[01:36:57.802][info] [#0:script/workspace/workspace.lua:324]: Preload start:	file:///home/ljc/.config/nvim/lua/plugins
+[01:36:57.804][info] [#0:script/workspace/workspace.lua:330]: Scan files at:	file:///home/ljc/.config/nvim/lua/plugins
+[01:36:57.805][info] [#0:script/workspace/workspace.lua:379]: Found 18 files at:	<fallback>
+[01:36:57.805][info] [#0:script/workspace/loading.lua:160]: Load files from disk:	<fallback>
+[01:36:57.806][info] [#0:script/workspace/loading.lua:100]: Preload file at: file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/table.lua , size = 4.445 KB
+[01:36:57.811][info] [#0:script/workspace/loading.lua:112]: ++++As library of:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/table.lua
+[01:36:57.813][info] [#0:script/workspace/loading.lua:100]: Preload file at: file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/os.lua , size = 5.611 KB
+[01:36:57.816][info] [#0:script/workspace/loading.lua:112]: ++++As library of:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/os.lua
+[01:36:57.816][info] [#0:script/workspace/loading.lua:100]: Preload file at: file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/package.lua , size = 2.699 KB
+[01:36:57.817][info] [#0:script/workspace/loading.lua:112]: ++++As library of:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/package.lua
+[01:36:57.819][info] [#0:script/workspace/loading.lua:100]: Preload file at: file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/io.lua , size = 6.364 KB
+[01:36:57.822][info] [#0:script/workspace/loading.lua:112]: ++++As library of:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/io.lua
+[01:36:57.823][info] [#0:script/workspace/loading.lua:100]: Preload file at: file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/basic.lua , size = 15.443 KB
+[01:36:57.829][info] [#0:script/workspace/loading.lua:112]: ++++As library of:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/basic.lua
+[01:36:57.831][info] [#0:script/workspace/loading.lua:100]: Preload file at: file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/string/buffer.lua , size = 18.123 KB
+[01:36:57.834][info] [#0:script/workspace/loading.lua:112]: ++++As library of:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/string/buffer.lua
+[01:36:57.835][info] [#0:script/workspace/loading.lua:100]: Preload file at: file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/debug.lua , size = 7.310 KB
+[01:36:57.838][info] [#0:script/workspace/loading.lua:112]: ++++As library of:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/debug.lua
+[01:36:57.839][info] [#0:script/workspace/loading.lua:100]: Preload file at: file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit/util.lua , size = 1.984 KB
+[01:36:57.846][info] [#0:script/workspace/loading.lua:112]: ++++As library of:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit/util.lua
+[01:36:57.846][info] [#0:script/workspace/loading.lua:100]: Preload file at: file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit.lua , size = 0.884 KB
+[01:36:57.847][info] [#0:script/workspace/loading.lua:112]: ++++As library of:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit.lua
+[01:36:57.849][info] [#0:script/workspace/loading.lua:100]: Preload file at: file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/ffi.lua , size = 2.529 KB
+[01:36:57.851][info] [#0:script/workspace/loading.lua:112]: ++++As library of:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/ffi.lua
+[01:36:57.852][info] [#0:script/workspace/loading.lua:100]: Preload file at: file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/coroutine.lua , size = 2.541 KB
+[01:36:57.853][info] [#0:script/workspace/loading.lua:112]: ++++As library of:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/coroutine.lua
+[01:36:57.855][info] [#0:script/workspace/loading.lua:100]: Preload file at: file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/builtin.lua , size = 0.302 KB
+[01:36:57.856][info] [#0:script/workspace/loading.lua:112]: ++++As library of:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/builtin.lua
+[01:36:57.856][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit/profile.lua
+[01:36:57.858][info] [#0:script/workspace/loading.lua:100]: Preload file at: file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/string.lua , size = 5.217 KB
+[01:36:57.860][info] [#0:script/workspace/loading.lua:112]: ++++As library of:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/string.lua
+[01:36:57.860][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/table/clear.lua
+[01:36:57.862][info] [#0:script/workspace/loading.lua:100]: Preload file at: file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/bit.lua , size = 1.243 KB
+[01:36:57.863][info] [#0:script/workspace/loading.lua:112]: ++++As library of:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/bit.lua
+[01:36:57.863][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/table/new.lua
+[01:36:57.864][info] [#0:script/workspace/loading.lua:100]: Preload file at: file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/math.lua , size = 7.982 KB
+[01:36:57.867][info] [#0:script/workspace/loading.lua:112]: ++++As library of:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/math.lua
+[01:36:57.867][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/math.lua
+[01:36:57.868][info] [#0:script/workspace/loading.lua:100]: Preload file at: file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/table/new.lua , size = 0.642 KB
+[01:36:57.868][info] [#0:script/workspace/loading.lua:112]: ++++As library of:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/table/new.lua
+[01:36:57.868][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/bit.lua
+[01:36:57.870][info] [#0:script/workspace/loading.lua:100]: Preload file at: file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/table/clear.lua , size = 0.797 KB
+[01:36:57.870][info] [#0:script/workspace/loading.lua:112]: ++++As library of:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/table/clear.lua
+[01:36:57.870][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/string.lua
+[01:36:57.872][info] [#0:script/workspace/loading.lua:100]: Preload file at: file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit/profile.lua , size = 0.348 KB
+[01:36:57.872][info] [#0:script/workspace/loading.lua:112]: ++++As library of:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit/profile.lua
+[01:36:57.872][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/builtin.lua
+[01:36:57.873][info] [#0:script/workspace/loading.lua:172]: Loaded files takes [0.050] sec: <fallback>
+[01:36:57.873][info] [#0:script/workspace/loading.lua:181]: Compile files takes [0.000] sec: <fallback>
+[01:36:57.873][info] [#0:script/workspace/loading.lua:182]: Loaded finish:	<fallback>
+[01:36:57.873][info] [#0:script/workspace/workspace.lua:381]: Preload finish at:	<fallback>
+[01:36:57.874][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/coroutine.lua
+[01:36:57.874][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/ffi.lua
+[01:36:57.876][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit.lua
+[01:36:57.877][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit/util.lua
+[01:36:57.877][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/debug.lua
+[01:36:57.877][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/string/buffer.lua
+[01:36:57.878][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/basic.lua
+[01:36:57.878][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/io.lua
+[01:36:57.879][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/package.lua
+[01:36:57.880][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/os.lua
+[01:36:57.880][info] [#0:script/workspace/workspace.lua:353]: Scan library at:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/table.lua
+[01:36:57.996][info] [#0:script/workspace/workspace.lua:379]: Found 30 files at:	file:///home/ljc/.config/nvim/lua/plugins
+[01:36:57.996][info] [#0:script/workspace/loading.lua:160]: Load files from disk:	file:///home/ljc/.config/nvim/lua/plugins
+[01:36:57.996][info] [#0:script/workspace/loading.lua:88]: Skip loaded file: file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/table.lua
+[01:36:57.996][info] [#0:script/workspace/loading.lua:112]: ++++As library of:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/table.lua
+[01:36:57.996][info] [#0:script/workspace/loading.lua:88]: Skip loaded file: file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/os.lua
+[01:36:57.996][info] [#0:script/workspace/loading.lua:112]: ++++As library of:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/os.lua
+[01:36:57.997][info] [#0:script/workspace/loading.lua:88]: Skip loaded file: file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/package.lua
+[01:36:57.997][info] [#0:script/workspace/loading.lua:112]: ++++As library of:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/package.lua
+[01:36:57.997][info] [#0:script/workspace/loading.lua:88]: Skip loaded file: file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/io.lua
+[01:36:57.997][info] [#0:script/workspace/loading.lua:112]: ++++As library of:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/io.lua
+[01:36:57.997][info] [#0:script/workspace/loading.lua:88]: Skip loaded file: file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/basic.lua
+[01:36:57.997][info] [#0:script/workspace/loading.lua:112]: ++++As library of:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/basic.lua
+[01:36:57.998][info] [#0:script/workspace/loading.lua:88]: Skip loaded file: file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/string/buffer.lua
+[01:36:57.998][info] [#0:script/workspace/loading.lua:112]: ++++As library of:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/string/buffer.lua
+[01:36:57.998][info] [#0:script/workspace/loading.lua:88]: Skip loaded file: file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/debug.lua
+[01:36:57.998][info] [#0:script/workspace/loading.lua:112]: ++++As library of:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/debug.lua
+[01:36:57.998][info] [#0:script/workspace/loading.lua:88]: Skip loaded file: file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit/util.lua
+[01:36:57.998][info] [#0:script/workspace/loading.lua:112]: ++++As library of:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit/util.lua
+[01:36:57.998][info] [#0:script/workspace/loading.lua:88]: Skip loaded file: file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit.lua
+[01:36:57.998][info] [#0:script/workspace/loading.lua:112]: ++++As library of:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit.lua
+[01:36:57.998][info] [#0:script/workspace/loading.lua:88]: Skip loaded file: file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/ffi.lua
+[01:36:57.998][info] [#0:script/workspace/loading.lua:112]: ++++As library of:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/ffi.lua
+[01:36:57.998][info] [#0:script/workspace/loading.lua:88]: Skip loaded file: file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/coroutine.lua
+[01:36:57.998][info] [#0:script/workspace/loading.lua:112]: ++++As library of:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/coroutine.lua
+[01:36:57.999][info] [#0:script/workspace/loading.lua:88]: Skip loaded file: file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/builtin.lua
+[01:36:57.999][info] [#0:script/workspace/loading.lua:112]: ++++As library of:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/builtin.lua
+[01:36:57.999][info] [#0:script/workspace/loading.lua:88]: Skip loaded file: file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/string.lua
+[01:36:57.999][info] [#0:script/workspace/loading.lua:112]: ++++As library of:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/string.lua
+[01:36:57.999][info] [#0:script/workspace/loading.lua:88]: Skip loaded file: file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/bit.lua
+[01:36:57.999][info] [#0:script/workspace/loading.lua:112]: ++++As library of:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/bit.lua
+[01:36:57.999][info] [#0:script/workspace/loading.lua:88]: Skip loaded file: file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/math.lua
+[01:36:57.999][info] [#0:script/workspace/loading.lua:112]: ++++As library of:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/math.lua
+[01:36:57.999][info] [#0:script/workspace/loading.lua:88]: Skip loaded file: file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/table/new.lua
+[01:36:57.999][info] [#0:script/workspace/loading.lua:112]: ++++As library of:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/table/new.lua
+[01:36:58.000][info] [#0:script/workspace/loading.lua:88]: Skip loaded file: file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/table/clear.lua
+[01:36:58.000][info] [#0:script/workspace/loading.lua:112]: ++++As library of:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/table/clear.lua
+[01:36:58.000][info] [#0:script/workspace/loading.lua:88]: Skip loaded file: file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit/profile.lua
+[01:36:58.000][info] [#0:script/workspace/loading.lua:112]: ++++As library of:	file:///home/ljc/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/LuaJIT%20en-us%20utf8/jit/profile.lua
+[01:36:58.000][info] [#0:script/workspace/loading.lua:88]: Skip loaded file: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:36:58.104][info] [#0:script/workspace/loading.lua:100]: Preload file at: file:///home/ljc/.config/nvim/lua/plugins/indent.lua , size = 1.031 KB
+[01:36:58.105][info] [#0:script/workspace/loading.lua:100]: Preload file at: file:///home/ljc/.config/nvim/lua/plugins/vim-illuminate.lua , size = 1.159 KB
+[01:36:58.106][info] [#0:script/workspace/loading.lua:100]: Preload file at: file:///home/ljc/.config/nvim/lua/plugins/colorscheme.lua , size = 1.094 KB
+[01:36:58.106][info] [#0:script/workspace/loading.lua:100]: Preload file at: file:///home/ljc/.config/nvim/lua/plugins/nvim-scrollbar.lua , size = 1.079 KB
+[01:36:58.107][info] [#0:script/workspace/loading.lua:100]: Preload file at: file:///home/ljc/.config/nvim/lua/plugins/nvim-treesitter.lua , size = 3.703 KB
+[01:36:58.108][info] [#0:script/workspace/loading.lua:100]: Preload file at: file:///home/ljc/.config/nvim/lua/plugins/gitsigns.lua , size = 2.441 KB
+[01:36:58.109][info] [#0:script/workspace/loading.lua:100]: Preload file at: file:///home/ljc/.config/nvim/lua/plugins/nvim-tree.lua , size = 2.314 KB
+[01:36:58.113][info] [#0:script/workspace/loading.lua:100]: Preload file at: file:///home/ljc/.config/nvim/lua/plugins/editor.lua , size = 1.740 KB
+[01:36:58.113][info] [#0:script/workspace/loading.lua:100]: Preload file at: file:///home/ljc/.config/nvim/lua/plugins/aerial.lua , size = 1.746 KB
+[01:36:58.114][info] [#0:script/workspace/loading.lua:100]: Preload file at: file:///home/ljc/.config/nvim/lua/plugins/nvim-web-devicons.lua , size = 0.389 KB
+[01:36:58.114][info] [#0:script/workspace/loading.lua:100]: Preload file at: file:///home/ljc/.config/nvim/lua/plugins/fidget.lua , size = 1.107 KB
+[01:36:58.216][info] [#0:script/workspace/loading.lua:172]: Loaded files takes [0.016] sec: file:///home/ljc/.config/nvim/lua/plugins
+[01:36:58.216][info] [#0:script/workspace/loading.lua:181]: Compile files takes [0.000] sec: file:///home/ljc/.config/nvim/lua/plugins
+[01:36:58.216][info] [#0:script/workspace/loading.lua:182]: Loaded finish:	file:///home/ljc/.config/nvim/lua/plugins
+[01:36:58.216][info] [#0:script/workspace/workspace.lua:381]: Preload finish at:	file:///home/ljc/.config/nvim/lua/plugins
+[01:36:58.223][info] [#0:script/provider/diagnostic.lua:560]: Diagnostics scope [file:///home/ljc/.config/nvim/lua/plugins], files count:[30]
+[01:36:59.418][info] [#0:script/provider/diagnostic.lua:577]: Diagnostics scope [file:///home/ljc/.config/nvim/lua/plugins] finished, takes [0.194] sec.
+[01:37:04.028][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:04.029][info] [#0:script/workspace/loading.lua:160]: Load files from disk:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:04.029][info] [#0:script/workspace/loading.lua:88]: Skip loaded file: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:04.029][info] [#0:script/workspace/loading.lua:172]: Loaded files takes [0.000] sec: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:04.029][info] [#0:script/workspace/loading.lua:181]: Compile files takes [0.000] sec: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:04.029][info] [#0:script/workspace/loading.lua:182]: Loaded finish:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:05.045][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:05.045][info] [#0:script/workspace/loading.lua:160]: Load files from disk:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:05.045][info] [#0:script/workspace/loading.lua:88]: Skip loaded file: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:05.045][info] [#0:script/workspace/loading.lua:172]: Loaded files takes [0.000] sec: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:05.045][info] [#0:script/workspace/loading.lua:181]: Compile files takes [0.000] sec: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:05.045][info] [#0:script/workspace/loading.lua:182]: Loaded finish:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:06.067][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:06.069][info] [#0:script/workspace/loading.lua:160]: Load files from disk:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:06.069][info] [#0:script/workspace/loading.lua:88]: Skip loaded file: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:06.070][info] [#0:script/workspace/loading.lua:172]: Loaded files takes [0.000] sec: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:06.070][info] [#0:script/workspace/loading.lua:181]: Compile files takes [0.000] sec: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:06.070][info] [#0:script/workspace/loading.lua:182]: Loaded finish:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:06.474][info] [#0:script/provider/diagnostic.lua:560]: Diagnostics scope [file:///home/ljc/.config/nvim/lua/plugins], files count:[30]
+[01:37:06.615][info] [#0:script/provider/diagnostic.lua:560]: Diagnostics scope [file:///home/ljc/.config/nvim/lua/plugins], files count:[30]
+[01:37:06.824][info] [#0:script/provider/diagnostic.lua:560]: Diagnostics scope [file:///home/ljc/.config/nvim/lua/plugins], files count:[30]
+[01:37:07.008][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:07.008][info] [#0:script/workspace/loading.lua:160]: Load files from disk:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:07.008][info] [#0:script/workspace/loading.lua:88]: Skip loaded file: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:07.009][info] [#0:script/workspace/loading.lua:172]: Loaded files takes [0.000] sec: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:07.009][info] [#0:script/workspace/loading.lua:181]: Compile files takes [0.000] sec: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:07.009][info] [#0:script/workspace/loading.lua:182]: Loaded finish:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:07.535][info] [#0:script/provider/diagnostic.lua:577]: Diagnostics scope [file:///home/ljc/.config/nvim/lua/plugins] finished, takes [0.185] sec.
+[01:37:07.852][info] [#0:script/provider/diagnostic.lua:560]: Diagnostics scope [file:///home/ljc/.config/nvim/lua/plugins], files count:[30]
+[01:37:08.146][info] [#0:script/provider/diagnostic.lua:560]: Diagnostics scope [file:///home/ljc/.config/nvim/lua/plugins], files count:[30]
+[01:37:08.453][info] [#0:script/provider/diagnostic.lua:560]: Diagnostics scope [file:///home/ljc/.config/nvim/lua/plugins], files count:[30]
+[01:37:08.861][info] [#0:script/provider/diagnostic.lua:560]: Diagnostics scope [file:///home/ljc/.config/nvim/lua/plugins], files count:[30]
+[01:37:09.168][info] [#0:script/provider/diagnostic.lua:560]: Diagnostics scope [file:///home/ljc/.config/nvim/lua/plugins], files count:[30]
+[01:37:09.575][info] [#0:script/provider/diagnostic.lua:560]: Diagnostics scope [file:///home/ljc/.config/nvim/lua/plugins], files count:[30]
+[01:37:10.008][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:10.009][info] [#0:script/workspace/loading.lua:160]: Load files from disk:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:10.009][info] [#0:script/workspace/loading.lua:88]: Skip loaded file: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:10.010][info] [#0:script/workspace/loading.lua:172]: Loaded files takes [0.000] sec: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:10.010][info] [#0:script/workspace/loading.lua:181]: Compile files takes [0.000] sec: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:10.010][info] [#0:script/workspace/loading.lua:182]: Loaded finish:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:10.062][info] [#0:script/provider/diagnostic.lua:577]: Diagnostics scope [file:///home/ljc/.config/nvim/lua/plugins] finished, takes [0.211] sec.
+[01:37:12.917][info] [#0:script/provider/diagnostic.lua:560]: Diagnostics scope [file:///home/ljc/.config/nvim/lua/plugins], files count:[30]
+[01:37:13.644][info] [#0:script/provider/diagnostic.lua:577]: Diagnostics scope [file:///home/ljc/.config/nvim/lua/plugins] finished, takes [0.134] sec.
+[01:37:20.042][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:20.043][info] [#0:script/workspace/loading.lua:160]: Load files from disk:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:20.043][info] [#0:script/workspace/loading.lua:88]: Skip loaded file: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:20.043][info] [#0:script/workspace/loading.lua:172]: Loaded files takes [0.000] sec: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:20.043][info] [#0:script/workspace/loading.lua:181]: Compile files takes [0.000] sec: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:20.043][info] [#0:script/workspace/loading.lua:182]: Loaded finish:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:22.825][info] [#0:script/provider/diagnostic.lua:560]: Diagnostics scope [file:///home/ljc/.config/nvim/lua/plugins], files count:[30]
+[01:37:23.572][info] [#0:script/provider/diagnostic.lua:577]: Diagnostics scope [file:///home/ljc/.config/nvim/lua/plugins] finished, takes [0.214] sec.
+[01:37:25.114][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:25.114][info] [#0:script/workspace/loading.lua:160]: Load files from disk:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:25.114][info] [#0:script/workspace/loading.lua:88]: Skip loaded file: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:25.114][info] [#0:script/workspace/loading.lua:172]: Loaded files takes [0.000] sec: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:25.114][info] [#0:script/workspace/loading.lua:181]: Compile files takes [0.000] sec: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:25.114][info] [#0:script/workspace/loading.lua:182]: Loaded finish:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:26.024][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:26.025][info] [#0:script/workspace/loading.lua:160]: Load files from disk:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:26.025][info] [#0:script/workspace/loading.lua:88]: Skip loaded file: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:26.026][info] [#0:script/workspace/loading.lua:172]: Loaded files takes [0.001] sec: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:26.026][info] [#0:script/workspace/loading.lua:181]: Compile files takes [0.000] sec: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:26.026][info] [#0:script/workspace/loading.lua:182]: Loaded finish:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:27.868][info] [#0:script/provider/diagnostic.lua:560]: Diagnostics scope [file:///home/ljc/.config/nvim/lua/plugins], files count:[30]
+[01:37:28.603][info] [#0:script/provider/diagnostic.lua:577]: Diagnostics scope [file:///home/ljc/.config/nvim/lua/plugins] finished, takes [0.132] sec.
+[01:37:29.222][info] [#0:script/provider/diagnostic.lua:560]: Diagnostics scope [file:///home/ljc/.config/nvim/lua/plugins], files count:[30]
+[01:37:29.905][info] [#0:script/provider/diagnostic.lua:577]: Diagnostics scope [file:///home/ljc/.config/nvim/lua/plugins] finished, takes [0.153] sec.
+[01:37:31.032][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:31.032][info] [#0:script/workspace/loading.lua:160]: Load files from disk:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:31.032][info] [#0:script/workspace/loading.lua:88]: Skip loaded file: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:31.033][info] [#0:script/workspace/loading.lua:172]: Loaded files takes [0.001] sec: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:31.033][info] [#0:script/workspace/loading.lua:181]: Compile files takes [0.000] sec: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:31.033][info] [#0:script/workspace/loading.lua:182]: Loaded finish:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:32.046][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:32.046][info] [#0:script/workspace/loading.lua:160]: Load files from disk:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:32.046][info] [#0:script/workspace/loading.lua:88]: Skip loaded file: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:32.046][info] [#0:script/workspace/loading.lua:172]: Loaded files takes [0.000] sec: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:32.046][info] [#0:script/workspace/loading.lua:181]: Compile files takes [0.000] sec: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:32.046][info] [#0:script/workspace/loading.lua:182]: Loaded finish:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:33.338][info] [#0:script/provider/diagnostic.lua:560]: Diagnostics scope [file:///home/ljc/.config/nvim/lua/plugins], files count:[30]
+[01:37:34.373][info] [#0:script/provider/diagnostic.lua:560]: Diagnostics scope [file:///home/ljc/.config/nvim/lua/plugins], files count:[30]
+[01:37:35.378][info] [#0:script/provider/diagnostic.lua:171]: clearDiagnostics	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:36.119][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:36.120][info] [#0:script/workspace/loading.lua:160]: Load files from disk:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:36.120][info] [#0:script/workspace/loading.lua:88]: Skip loaded file: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:36.120][info] [#0:script/workspace/loading.lua:172]: Loaded files takes [0.000] sec: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:36.120][info] [#0:script/workspace/loading.lua:181]: Compile files takes [0.000] sec: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:36.120][info] [#0:script/workspace/loading.lua:182]: Loaded finish:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:37.034][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:37.035][info] [#0:script/workspace/loading.lua:160]: Load files from disk:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:37.035][info] [#0:script/workspace/loading.lua:88]: Skip loaded file: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:37.035][info] [#0:script/workspace/loading.lua:172]: Loaded files takes [0.000] sec: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:37.035][info] [#0:script/workspace/loading.lua:181]: Compile files takes [0.000] sec: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:37.035][info] [#0:script/workspace/loading.lua:182]: Loaded finish:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:38.774][info] [#0:script/provider/diagnostic.lua:560]: Diagnostics scope [file:///home/ljc/.config/nvim/lua/plugins], files count:[30]
+[01:37:39.626][info] [#0:script/provider/diagnostic.lua:560]: Diagnostics scope [file:///home/ljc/.config/nvim/lua/plugins], files count:[30]
+[01:37:39.829][info] [#0:script/provider/diagnostic.lua:560]: Diagnostics scope [file:///home/ljc/.config/nvim/lua/plugins], files count:[30]
+[01:37:40.032][info] [#0:script/provider/diagnostic.lua:560]: Diagnostics scope [file:///home/ljc/.config/nvim/lua/plugins], files count:[30]
+[01:37:40.807][info] [#0:script/provider/diagnostic.lua:577]: Diagnostics scope [file:///home/ljc/.config/nvim/lua/plugins] finished, takes [0.180] sec.
+[01:37:45.183][info] [#0:script/provider/diagnostic.lua:171]: clearDiagnostics	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:46.062][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:46.062][info] [#0:script/workspace/loading.lua:160]: Load files from disk:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:46.062][info] [#0:script/workspace/loading.lua:88]: Skip loaded file: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:46.063][info] [#0:script/workspace/loading.lua:172]: Loaded files takes [0.000] sec: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:46.063][info] [#0:script/workspace/loading.lua:181]: Compile files takes [0.000] sec: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:46.063][info] [#0:script/workspace/loading.lua:182]: Loaded finish:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:48.561][info] [#0:script/provider/diagnostic.lua:560]: Diagnostics scope [file:///home/ljc/.config/nvim/lua/plugins], files count:[30]
+[01:37:49.265][info] [#0:script/provider/diagnostic.lua:577]: Diagnostics scope [file:///home/ljc/.config/nvim/lua/plugins] finished, takes [0.149] sec.
+[01:37:51.040][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:51.041][info] [#0:script/workspace/loading.lua:160]: Load files from disk:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:51.041][info] [#0:script/workspace/loading.lua:88]: Skip loaded file: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:51.041][info] [#0:script/workspace/loading.lua:172]: Loaded files takes [0.000] sec: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:51.041][info] [#0:script/workspace/loading.lua:181]: Compile files takes [0.000] sec: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:51.041][info] [#0:script/workspace/loading.lua:182]: Loaded finish:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:52.087][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:52.088][info] [#0:script/workspace/loading.lua:160]: Load files from disk:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:52.088][info] [#0:script/workspace/loading.lua:88]: Skip loaded file: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:52.089][info] [#0:script/workspace/loading.lua:172]: Loaded files takes [0.001] sec: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:52.089][info] [#0:script/workspace/loading.lua:181]: Compile files takes [0.000] sec: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:52.089][info] [#0:script/workspace/loading.lua:182]: Loaded finish:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:37:53.845][info] [#0:script/provider/diagnostic.lua:560]: Diagnostics scope [file:///home/ljc/.config/nvim/lua/plugins], files count:[30]
+[01:37:54.757][info] [#0:script/provider/diagnostic.lua:577]: Diagnostics scope [file:///home/ljc/.config/nvim/lua/plugins] finished, takes [0.198] sec.
+[01:37:55.075][info] [#0:script/provider/diagnostic.lua:560]: Diagnostics scope [file:///home/ljc/.config/nvim/lua/plugins], files count:[30]
+[01:37:55.675][info] [#0:script/provider/diagnostic.lua:577]: Diagnostics scope [file:///home/ljc/.config/nvim/lua/plugins] finished, takes [0.179] sec.
+[01:38:13.120][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:38:13.121][info] [#0:script/workspace/loading.lua:160]: Load files from disk:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:38:13.121][info] [#0:script/workspace/loading.lua:88]: Skip loaded file: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:38:13.121][info] [#0:script/workspace/loading.lua:172]: Loaded files takes [0.000] sec: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:38:13.121][info] [#0:script/workspace/loading.lua:181]: Compile files takes [0.000] sec: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:38:13.121][info] [#0:script/workspace/loading.lua:182]: Loaded finish:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:38:14.134][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:38:14.134][info] [#0:script/workspace/loading.lua:160]: Load files from disk:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:38:14.134][info] [#0:script/workspace/loading.lua:88]: Skip loaded file: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:38:14.134][info] [#0:script/workspace/loading.lua:172]: Loaded files takes [0.000] sec: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:38:14.134][info] [#0:script/workspace/loading.lua:181]: Compile files takes [0.000] sec: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:38:14.134][info] [#0:script/workspace/loading.lua:182]: Loaded finish:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:38:16.248][info] [#0:script/provider/diagnostic.lua:560]: Diagnostics scope [file:///home/ljc/.config/nvim/lua/plugins], files count:[30]
+[01:38:16.426][info] [#0:script/provider/diagnostic.lua:560]: Diagnostics scope [file:///home/ljc/.config/nvim/lua/plugins], files count:[30]
+[01:38:17.013][info] [#0:script/provider/diagnostic.lua:577]: Diagnostics scope [file:///home/ljc/.config/nvim/lua/plugins] finished, takes [0.203] sec.
+[01:38:20.100][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:38:20.100][info] [#0:script/workspace/loading.lua:160]: Load files from disk:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:38:20.100][info] [#0:script/workspace/loading.lua:88]: Skip loaded file: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:38:20.101][info] [#0:script/workspace/loading.lua:172]: Loaded files takes [0.000] sec: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:38:20.101][info] [#0:script/workspace/loading.lua:181]: Compile files takes [0.000] sec: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:38:20.101][info] [#0:script/workspace/loading.lua:182]: Loaded finish:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:38:23.057][info] [#0:script/provider/diagnostic.lua:560]: Diagnostics scope [file:///home/ljc/.config/nvim/lua/plugins], files count:[30]
+[01:38:23.058][info] [#0:script/workspace/workspace.lua:284]: Scan files at:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:38:23.059][info] [#0:script/workspace/loading.lua:160]: Load files from disk:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:38:23.059][info] [#0:script/workspace/loading.lua:88]: Skip loaded file: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:38:23.059][info] [#0:script/workspace/loading.lua:172]: Loaded files takes [0.000] sec: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:38:23.059][info] [#0:script/workspace/loading.lua:181]: Compile files takes [0.000] sec: file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:38:23.059][info] [#0:script/workspace/loading.lua:182]: Loaded finish:	file:///home/ljc/.config/nvim/lua/plugins/fzf.lua
+[01:38:23.501][info] [#0:script/provider/provider.lua:176]: Server shutdown.
+[01:38:23.502][warn] [#0:script/pub/report.lua:24]: Load proto error:	Disconnected!
