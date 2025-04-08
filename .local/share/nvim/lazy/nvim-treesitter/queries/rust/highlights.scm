@@ -54,6 +54,14 @@
     "_"
   ] @variable.parameter)
 
+(parameter
+  (ref_pattern
+    [
+      (mut_pattern
+        (identifier) @variable.parameter)
+      (identifier) @variable.parameter
+    ]))
+
 (closure_parameters
   (_) @variable.parameter)
 
@@ -257,6 +265,7 @@
 [
   "async"
   "await"
+  "gen"
 ] @keyword.coroutine
 
 "try" @keyword.exception
@@ -264,6 +273,7 @@
 [
   "ref"
   "pub"
+  "raw"
   (mutable_specifier)
   "const"
   "static"
@@ -448,19 +458,19 @@
   "!" @type.builtin)
 
 (macro_invocation
-  macro: (identifier) @keyword.exception
+  macro: (identifier) @_identifier @keyword.exception
   "!" @keyword.exception
-  (#eq? @keyword.exception "panic"))
+  (#eq? @_identifier "panic"))
 
 (macro_invocation
-  macro: (identifier) @keyword.exception
+  macro: (identifier) @_identifier @keyword.exception
   "!" @keyword.exception
-  (#contains? @keyword.exception "assert"))
+  (#contains? @_identifier "assert"))
 
 (macro_invocation
-  macro: (identifier) @keyword.debug
+  macro: (identifier) @_identifier @keyword.debug
   "!" @keyword.debug
-  (#eq? @keyword.debug "dbg"))
+  (#eq? @_identifier "dbg"))
 
 ; Comments
 [
@@ -475,3 +485,47 @@
 
 (block_comment
   (doc_comment)) @comment.documentation
+
+(call_expression
+  function: (scoped_identifier
+    path: (identifier) @_regex
+    (#any-of? @_regex "Regex" "ByteRegexBuilder")
+    name: (identifier) @_new
+    (#eq? @_new "new"))
+  arguments: (arguments
+    (raw_string_literal
+      (string_content) @string.regexp)))
+
+(call_expression
+  function: (scoped_identifier
+    path: (scoped_identifier
+      (identifier) @_regex
+      (#any-of? @_regex "Regex" "ByteRegexBuilder") .)
+    name: (identifier) @_new
+    (#eq? @_new "new"))
+  arguments: (arguments
+    (raw_string_literal
+      (string_content) @string.regexp)))
+
+(call_expression
+  function: (scoped_identifier
+    path: (identifier) @_regex
+    (#any-of? @_regex "RegexSet" "RegexSetBuilder")
+    name: (identifier) @_new
+    (#eq? @_new "new"))
+  arguments: (arguments
+    (array_expression
+      (raw_string_literal
+        (string_content) @string.regexp))))
+
+(call_expression
+  function: (scoped_identifier
+    path: (scoped_identifier
+      (identifier) @_regex
+      (#any-of? @_regex "RegexSet" "RegexSetBuilder") .)
+    name: (identifier) @_new
+    (#eq? @_new "new"))
+  arguments: (arguments
+    (array_expression
+      (raw_string_literal
+        (string_content) @string.regexp))))

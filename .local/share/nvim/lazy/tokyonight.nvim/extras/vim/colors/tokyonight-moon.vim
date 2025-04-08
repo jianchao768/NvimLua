@@ -1,5 +1,5 @@
-let g:colors_name = "tokyonight-moon"
 hi clear
+let g:colors_name = "tokyonight-moon"
   
 hi ALEErrorSign guibg=NONE guifg=#c53b53
 hi ALEWarningSign guibg=NONE guifg=#ffc777
@@ -14,6 +14,10 @@ hi BlinkCmpKindTabNine guibg=NONE guifg=#4fd6be
 hi BlinkCmpLabel guibg=NONE guifg=#c8d3f5
 hi BlinkCmpLabelDeprecated gui=strikethrough guibg=NONE guifg=#3b4261
 hi BlinkCmpLabelMatch guibg=NONE guifg=#65bcff
+hi BlinkCmpMenu guibg=#1e2030 guifg=#c8d3f5
+hi BlinkCmpMenuBorder guibg=#1e2030 guifg=#589ed7
+hi BlinkCmpSignatureHelp guibg=#1e2030 guifg=#c8d3f5
+hi BlinkCmpSignatureHelpBorder guibg=#1e2030 guifg=#589ed7
 hi Bold gui=bold guibg=NONE guifg=#c8d3f5
 hi Character guibg=NONE guifg=#c3e88d
 hi ColorColumn guibg=#1b1d2b
@@ -245,14 +249,14 @@ hi WildMenu guibg=#2d3f76
 hi WinSeparator gui=bold guibg=NONE guifg=#1b1d2b
 hi debugBreakpoint guibg=#203346 guifg=#0db9d7
 hi debugPC guibg=#1e2030
-hi diffAdded guibg=NONE guifg=#b8db87
-hi diffChanged guibg=NONE guifg=#7ca1f2
+hi diffAdded guibg=#273849 guifg=#b8db87
+hi diffChanged guibg=#252a3f guifg=#7ca1f2
 hi diffFile guibg=NONE guifg=#82aaff
 hi diffIndexLine guibg=NONE guifg=#c099ff
 hi diffLine guibg=NONE guifg=#636da6
-hi diffNewFile guibg=NONE guifg=#ff966c
-hi diffOldFile guibg=NONE guifg=#ffc777
-hi diffRemoved guibg=NONE guifg=#e26a75
+hi diffNewFile guibg=#273849 guifg=#65bcff
+hi diffOldFile guibg=#3a273a guifg=#65bcff
+hi diffRemoved guibg=#3a273a guifg=#e26a75
 hi healthError guibg=NONE guifg=#c53b53
 hi healthSuccess guibg=NONE guifg=#4fd6be
 hi healthWarning guibg=NONE guifg=#ffc777

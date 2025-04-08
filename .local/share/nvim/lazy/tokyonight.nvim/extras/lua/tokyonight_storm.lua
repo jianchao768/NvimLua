@@ -3,6 +3,7 @@ local colors = {
   _style = "storm",
   bg = "#24283b",
   bg_dark = "#1f2335",
+  bg_dark1 = "#1b1e2d",
   bg_float = "#1f2335",
   bg_highlight = "#292e42",
   bg_popup = "#1f2335",
@@ -272,7 +273,7 @@ local highlights = {
   ["@markup.underline"] = {
     underline = true
   },
-  ["@module"] = "Include",
+  ["@module"] = "Directory",
   ["@module.builtin"] = {
     fg = "#f7768e"
   },
@@ -481,6 +482,22 @@ local highlights = {
   BlinkCmpLabelMatch = {
     bg = "NONE",
     fg = "#2ac3de"
+  },
+  BlinkCmpMenu = {
+    bg = "#1f2335",
+    fg = "#c0caf5"
+  },
+  BlinkCmpMenuBorder = {
+    bg = "#1f2335",
+    fg = "#29a4bd"
+  },
+  BlinkCmpSignatureHelp = {
+    bg = "#1f2335",
+    fg = "#c0caf5"
+  },
+  BlinkCmpSignatureHelpBorder = {
+    bg = "#1f2335",
+    fg = "#29a4bd"
   },
   Bold = {
     bold = true,
@@ -2271,6 +2288,32 @@ local highlights = {
     bg = "#24283b",
     fg = "#c0caf5"
   },
+  SnacksPickerBoxTitle = {
+    bg = "#1f2335",
+    fg = "#ff9e64"
+  },
+  SnacksPickerInputBorder = {
+    bg = "#1f2335",
+    fg = "#ff9e64"
+  },
+  SnacksPickerInputTitle = {
+    bg = "#1f2335",
+    fg = "#ff9e64"
+  },
+  SnacksPickerPickWin = {
+    bg = "#3d59a1",
+    bold = true,
+    fg = "#c0caf5"
+  },
+  SnacksPickerPickWinCurrent = {
+    bg = "#ff007c",
+    bold = true,
+    fg = "#c0caf5"
+  },
+  SnacksPickerSelected = {
+    fg = "#ff007c"
+  },
+  SnacksPickerToggle = "SnacksProfilerBadgeInfo",
   SnacksProfilerBadgeInfo = {
     bg = "#25384b",
     fg = "#2ac3de"
@@ -2519,9 +2562,11 @@ local highlights = {
     bg = "#1f2335"
   },
   diffAdded = {
+    bg = "#283b4d",
     fg = "#449dab"
   },
   diffChanged = {
+    bg = "#272d43",
     fg = "#6183bb"
   },
   diffFile = {
@@ -2534,12 +2579,15 @@ local highlights = {
     fg = "#565f89"
   },
   diffNewFile = {
-    fg = "#ff9e64"
+    bg = "#283b4d",
+    fg = "#2ac3de"
   },
   diffOldFile = {
-    fg = "#e0af68"
+    bg = "#3f2d3d",
+    fg = "#2ac3de"
   },
   diffRemoved = {
+    bg = "#3f2d3d",
     fg = "#914c54"
   },
   dosIniLabel = "@property",
