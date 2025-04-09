@@ -6,7 +6,7 @@ return {
     --- p 跳转函数，但是光标不过去
     -------------------
     "stevearc/aerial.nvim",
-    dependencies = { "nvim-treesitter/nvim-treesitter", "neovim/nvim-lspconfig" },
+    --dependencies = { "nvim-treesitter/nvim-treesitter", "neovim/nvim-lspconfig" },
     config = function()
         require("aerial").setup({
             attach_mode = "global", --独立窗口，不设置的话会绑定在某个buffer上
@@ -23,7 +23,8 @@ return {
             show_guides = true, -- 显示缩进线
             nerd_font = "auto", -- 用NerdFont补充 
 
-            backends = { "treesitter", "lsp" }, -- 同时使用 treesitter 和 lsp
+            --backends = { "treesitter", "lsp" }, -- 同时使用 treesitter 和 lsp
+            backends = {},
             update_events = "TextChanged,InsertLeave", --自动更新符号
 
             filter_kind = { --显示的符号类型

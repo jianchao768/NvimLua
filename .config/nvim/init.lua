@@ -25,13 +25,15 @@ require("lazy").setup({
 
     -- 文件树和tag表、FZF
     require("plugins.nvim-tree"),
-    require("plugins.aerial"),
+    --require("plugins.aerial"), --bug贼多
+    require("plugins.tagbar"),
     require("plugins.indent"),
     require("plugins.fzf"),
 
     -- 高亮和git提示
-    require("plugins.nvim-treesitter"),
+    --require("plugins.nvim-treesitter"), --暂时不好用
     require("plugins.gitsigns"),
+    require("plugins.vim-cpp-highlight"),
 
     -- LSP
     require("lsp.mason"),

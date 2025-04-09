@@ -12,6 +12,16 @@ vim.api.nvim_create_autocmd("BufReadPost", {
   end,
 })
 
+-- 拷贝高亮显示
+vim.api.nvim_create_autocmd("TextYankPost", {
+	pattern = { "*" },
+	callback = function()
+		vim.highlight.on_yank({
+			timeout = 200,
+		})
+	end,
+})
+
 -- 进入新文件时，自动切换当前目录为文件所在目录（lcd %:p:h）
 -- 这个改了之后， 文件跳转时，Nvim-tree 会自动调整为当前目录
 -- 不过为了FZF，这个先关了
@@ -21,12 +31,12 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 --})
 
 -- 右侧参考线
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "c", "cpp", "lua", "python" },
-  callback = function()
-    vim.wo.colorcolumn = "100"
-  end,
-})
+--vim.api.nvim_create_autocmd("FileType", {
+--  pattern = { "c", "cpp", "lua", "python" },
+--  callback = function()
+--    vim.wo.colorcolumn = "100"
+--  end,
+--})
 
 -- 当 nvim-tree 是最后一个窗口时自动关闭
 --vim.api.nvim_create_autocmd("BufEnter", {
@@ -55,26 +65,15 @@ vim.api.nvim_create_autocmd("BufEnter", {
         end
 
         -- 处理 vi . 打开后只有 NvimTree 的情况
-        if vim.tbl_count(filetypes) == 1 and (filetypes["NvimTree"] or filetypes["aerial"]) then
+        if vim.tbl_count(filetypes) == 1 and (filetypes["NvimTree"] or filetypes["Outline"]) then
                 vim.cmd("qall!") -- 直接退出 Neovim
             return
         end
 
-        -- 如果窗口内 **只剩下** aerial 和 NvimTree，则退出 Neovim
-        if filetypes["NvimTree"] and filetypes["aerial"] and vim.tbl_count(filetypes) == 2 then
+        -- 如果窗口内 **只剩下** Outline 和 NvimTree，则退出 Neovim
+        if filetypes["NvimTree"] and filetypes["Outline"] and vim.tbl_count(filetypes) == 2 then
             vim.cmd("qall!") -- 退出所有窗口
         end
     end,
 })
-
--- 拷贝高亮显示
-vim.api.nvim_create_autocmd("TextYankPost", {
-	pattern = { "*" },
-	callback = function()
-		vim.highlight.on_yank({
-			timeout = 200,
-		})
-	end,
-})
-
 

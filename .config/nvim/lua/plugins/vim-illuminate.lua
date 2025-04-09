@@ -16,9 +16,9 @@ return {
         --vim.keymap.set("n", "<leader>n", require("illuminate").goto_next_reference, { noremap = true, silent = true })
         --vim.keymap.set("n", "<leader>N", require("illuminate").goto_prev_reference, { noremap = true, silent = true })
         vim.cmd [[
-        highlight IlluminatedWordText guibg=#44475a gui=bold
-        highlight IlluminatedWordRead guibg=#44475a gui=bold
-        highlight IlluminatedWordWrite guibg=#44475a gui=bold
+        highlight IlluminatedWordText guibg=#64875a gui=bold
+        highlight IlluminatedWordRead guibg=#64875a gui=bold
+        highlight IlluminatedWordWrite guibg=#64875a gui=bold
         ]]
 
     end,

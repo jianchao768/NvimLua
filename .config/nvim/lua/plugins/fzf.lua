@@ -58,10 +58,10 @@ return {
                 --整体窗口大小
                 border     = "none",
 				height     = 0.90,
-				width      = 0.90,
+				width      = 0.70,
                 row              = 0.35,            -- window row position (0=top, 1=bottom)
                 col              = 0.50,            -- window col position (0=left, 1=right)
-                backdrop   = 20, --不透明度
+                backdrop   = 40, --不透明度
 
 				fullscreen = false,
 				preview    = {
