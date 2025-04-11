@@ -15,11 +15,15 @@ return {
         -- 设置快捷键：跳转到上/下一个高亮单词
         --vim.keymap.set("n", "<leader>n", require("illuminate").goto_next_reference, { noremap = true, silent = true })
         --vim.keymap.set("n", "<leader>N", require("illuminate").goto_prev_reference, { noremap = true, silent = true })
-        vim.cmd [[
-        highlight IlluminatedWordText guibg=#64875a gui=bold
-        highlight IlluminatedWordRead guibg=#64875a gui=bold
-        highlight IlluminatedWordWrite guibg=#64875a gui=bold
-        ]]
+        --vim.cmd [[
+        --highlight IlluminatedWordText guibg=#64675a gui=bold
+        --highlight IlluminatedWordRead guibg=#64675a gui=bold
+        --highlight IlluminatedWordWrite guibg=#64675a gui=bold
+        --]]
+        -- 设置为下划线高亮样式
+        vim.api.nvim_set_hl(0, "IlluminatedWordText", { underline = true })
+        vim.api.nvim_set_hl(0, "IlluminatedWordRead", { underline = true })
+        vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { underline = true })
 
     end,
 }

@@ -19,18 +19,15 @@
 
 ![show](./assets/show.png)
 
-### 还需要手动安装的模块：
+### TODO:
 
 ```bash
-~/.fzf/
+1.需要手动安装的模块：
+  ~/.fzf/
 
-#插件
-fzf-lua
-hlchunk.nvim
-nvim-autopairs
-gruvbox-material
-tagbar
-vim-cpp-enhanced-highlight
+2.解压插件
+  cd ~/.local/share/nvim/ 
+  tar -xzvf lazy.tar.gz 
 
 ```
 
@@ -45,7 +42,7 @@ vim-cpp-enhanced-highlight
     .local/share/nvim/mason/packages/clangd/clangd_20.1.0/bin/clangd*
 ```
 
-### 备选：
+### 备选插件：
 ```
 aerial.nvim
 

@@ -29,11 +29,13 @@ require("lazy").setup({
     require("plugins.tagbar"),
     require("plugins.indent"),
     require("plugins.fzf"),
+    require("plugins.bufferline"),
 
     -- 高亮和git提示
     --require("plugins.nvim-treesitter"), --暂时不好用
     require("plugins.gitsigns"),
     require("plugins.vim-cpp-highlight"),
+    require("plugins.interestingwords"),
 
     -- LSP
     require("lsp.mason"),

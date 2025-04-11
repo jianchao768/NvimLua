@@ -38,7 +38,7 @@ return {
                 dim_inactive = false,
                 transparent_mode = false,
             })
-            --vim.cmd("colorscheme gruvbox")
+            vim.cmd("colorscheme gruvbox")
         end,
     },
     {
@@ -70,7 +70,7 @@ return {
             vim.g.gruvbox_material_diagnostic_virtual_text = "colored"
             vim.g.gruvbox_material_current_word = "grey background"
 
-            vim.cmd("colorscheme gruvbox-material")
+            --vim.cmd("colorscheme gruvbox-material")
         end,
     },
 }
