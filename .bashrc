@@ -153,3 +153,4 @@ alias gb='git branch'
 alias gl='git log'
 alias gll='git log --oneline'
 
+alias glg="git log --graph --pretty=format:'%Cred%h%Creset %Cgreen(%ci) -%C(yellow)%d%Creset %s  %C(bold blue)<%an>%Creset' --date=relative"
