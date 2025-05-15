@@ -121,12 +121,21 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 #nvim ----------
-export PATH=~/.config/nvim/lib/nvim-linux-x86_64/lib/:${PATH}
-export PATH=~/.config/nvim/lib/nvim-linux-x86_64/bin/:${PATH}
-#export PATH=~/.config/nvim/lib/node-v20.12.0-linux-x64/lib/:${PATH}
-#export PATH=~/.config/nvim/lib/node-v20.12.0-linux-x64/bin/:${PATH}
-#export PATH=~/Downloads/clangd-llvm/clang+llvm-17.0.6-x86_64-linux-gnu-ubuntu-22.04/bin/:${PATH}
-#export PATH=~/Downloads/nvim-linux-arm64/bin/:${PATH}
+UBUNTU_VERSION=$(lsb_release -rs | cut -d. -f1)
+
+if [ "$UBUNTU_VERSION" -ge 22 ]; then
+    # Ubuntu 22 或更高版本
+    export PATH=~/.config/nvim/lib/nvim-linux-x86_64/lib/:${PATH}
+    export PATH=~/.config/nvim/lib/nvim-linux-x86_64/bin/:${PATH}
+elif [ "$UBUNTU_VERSION" = 20 ]; then
+    # Ubuntu 20
+    export PATH=~/.config/nvim/lib/nvim-build20.04-v0.11/lib/:${PATH}
+    export PATH=~/.config/nvim/lib/nvim-build20.04-v0.11/bin/:${PATH}
+else
+    # Ubuntu 18 及其他
+    export PATH=~/.config/nvim/lib/nvim-build18.04-v0.11/lib/:${PATH}
+    export PATH=~/.config/nvim/lib/nvim-build18.04-v0.11/bin/:${PATH}
+fi
 
 # FZF
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
@@ -154,3 +163,5 @@ alias gl='git log'
 alias gll='git log --oneline'
 
 alias glg="git log --graph --pretty=format:'%Cred%h%Creset %Cgreen(%ci) -%C(yellow)%d%Creset %s  %C(bold blue)<%an>%Creset' --date=relative"
+
+

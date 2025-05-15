@@ -24,6 +24,7 @@
 ```bash
 1.需要手动安装的模块：
   ~/.fzf/
+  或者直接解压 fzf.tar.gz
 
 2.解压插件
   cd ~/.local/share/nvim/ 

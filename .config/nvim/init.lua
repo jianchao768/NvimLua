@@ -14,11 +14,6 @@ require("config.autocmd")
 
 vim.opt.rtp:prepend("~/.config/nvim/lib/lazy.nvim-11.17.1")
 require("lazy").setup({
-    install = { missing = false,},  -- 禁止自动安装缺失的插件
-    checker = { enabled = false,},  -- 禁止自动更新检测
-    change_detection = { enabled = false,}, -- 禁用监听文件变化
-    rocks = { hererocks = false,},  -- 禁用 hererocks
-
     -- 颜色图标
     require("plugins.colorscheme"),
     require("plugins.nvim-web-devicons"),
@@ -49,5 +44,10 @@ require("lazy").setup({
     require("plugins.editor"),
 
     --{ "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },  -- 状态栏
+},{
+    install = { missing = false,},  -- 禁止自动安装缺失的插件
+    checker = { enabled = false,},  -- 禁止自动更新检测
+    change_detection = { enabled = false,}, -- 禁用监听文件变化
+    rocks = { hererocks = false,},  -- 禁用 hererocks
 })
 
