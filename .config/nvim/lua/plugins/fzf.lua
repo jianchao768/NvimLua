@@ -6,10 +6,10 @@ return {
 	"theniceboy/fzf-lua",
     keys = function()
         return {
-            "<c-p>",
+            "<Space>f",
             "<leader>fg", "<leader>fl", "<leader>fb", "<leader>fw", "<leader>fW",
             "<leader>fc", "<leader>fr",
-            "<leader>tt",
+            "<leader>ft",
         }
     end,
 	config = function()
@@ -19,7 +19,8 @@ return {
         ----
         --FZF 搜索工作目录下的文件
         ----
-        vim.keymap.set('n', '<c-p>', function() fzf.files(opts) end, m)
+        -- vim.keymap.set('n', '<c-p>', function() fzf.files(opts) end, m)
+        vim.keymap.set('n', '<Space>f', function() fzf.files(opts) end, m)
         ----
         --FZF 搜索文件中的内容
         -- Leader+fg : 搜索工作目录下的所有文件
@@ -48,8 +49,46 @@ return {
         -------
         -- 其他
         -- Leader+tt : 查看tab
-        vim.keymap.set('n', '<leader>tt', "<cmd>FzfLua tabs<CR>")
+        vim.keymap.set('n', '<leader>ft', "<cmd>FzfLua tabs<CR>")
 
+        -------
+        --- 实现vscode 类似的标签功能
+        ---   打开新文件时在新buffer中打开
+        ---   如果该文件已经打开了，则跳转过去
+        -------
+        local function smart_open_file(selected)
+            if not selected or #selected == 0 then return end
+            local filepath = vim.fn.fnamemodify(selected[1], ':p')  -- 绝对路径
+
+            -- 优先检查当前窗口的 buffer
+            local current_buf = vim.api.nvim_get_current_buf()
+            if vim.api.nvim_buf_get_name(current_buf) == filepath then
+                return  -- 已在当前 buffer，无需操作
+            end
+
+            -- 检查所有窗口
+            for _, win in ipairs(vim.api.nvim_list_wins()) do
+                local buf = vim.api.nvim_win_get_buf(win)
+                if vim.api.nvim_buf_get_name(buf) == filepath then
+                    vim.api.nvim_set_current_win(win)  -- 跳转到窗口
+                    return
+                end
+            end
+
+            -- 检查当前 buffer 是否为空
+            local current_buf = vim.api.nvim_get_current_buf()
+            local is_buffer_empty = vim.api.nvim_buf_get_name(current_buf) == "" and
+                vim.api.nvim_buf_line_count(current_buf) == 1 and
+                vim.api.nvim_buf_get_lines(current_buf, 0, 1, true)[1] == ""
+
+            -- 根据当前 buffer 状态决定打开方式
+            if is_buffer_empty then
+                vim.cmd("edit " .. filepath)  -- 直接在当前空 buffer 打开
+            else
+                vim.cmd("tabnew " .. filepath)  -- 新标签页打开
+            end
+        end
+        -------
 		fzf.setup({
 			global_resume = true,
 			global_resume_query = true,
@@ -96,15 +135,18 @@ return {
                     toggle_behavior = "extend", -- 控制隐藏 preview 后主窗口尺寸是否变化 AAA
 				},
 			},
-			files = {
+            files = {
+                actions = {
+                    ["default"] = smart_open_file,
+                },
 				-- previewer      = "bat",          -- uncomment to override previewer
 				-- (name from 'previewers' table)
 				-- set to 'false' to disable
 				prompt       = 'Files❯ ',
 				multiprocess = true, -- run command in a separate process
-				git_icons    = true, -- show git icons?
-				file_icons   = true, -- show file icons?
-				color_icons  = true, -- colorize file|git icons
+				git_icons    = false, -- show git icons?
+				file_icons   = false, -- show file icons?
+				color_icons  = false, -- colorize file|git icons
 				-- executed command priority is 'cmd' (if exists)
 				-- otherwise auto-detect prioritizes `fd`:`rg`:`find`
 				-- default options are controlled by 'fd|rg|find|_opts'
@@ -117,14 +159,15 @@ return {
                 cwd_prompt             = true,      -- 目录太长就用简写
                 cwd_prompt_shorten_len = 32,        -- shorten prompt beyond this length
                 cwd_prompt_shorten_val = 1,         -- shortened path parts length
+
 			},
 			grep = {
                 prompt            = 'Rg❯ ',
                 input_prompt      = 'Grep For❯ ',
                 multiprocess      = true,           -- run command in a separate process
                 git_icons         = false,          -- show git icons?
-                file_icons        = true,           -- show file icons (true|"devicons"|"mini")?
-                color_icons       = true,           -- colorize file|git icons
+                file_icons        = false,           -- show file icons (true|"devicons"|"mini")?
+                color_icons       = false,           -- colorize file|git icons
 				--rg_opts = "--column --line-number --color=always --smart-case --ignore-file=.fzfignore",
                 ---- 参数 -----
                 --- no-heading: 不显把文件名单独列一行
@@ -135,8 +178,8 @@ return {
 			},
 			buffers = {
 				prompt        = 'Buffers❯ ',
-				file_icons    = true, -- show file icons?
-				color_icons   = true, -- colorize file|git icons
+				file_icons    = false, -- show file icons?
+				color_icons   = false, -- colorize file|git icons
 				sort_lastused = true, -- sort buffers() by last used
                 cwd_only      = false, -- 只显示当前工作目录下的buffer？
 			},
@@ -144,8 +187,8 @@ return {
                 prompt            = 'Tabs❯ ',
                 tab_title         = "Tab",
                 tab_marker        = "<<",
-                file_icons        = true,         -- show file icons (true|"devicons"|"mini")?
-                color_icons       = true,         -- colorize file|git icons
+                file_icons        = false,         -- show file icons (true|"devicons"|"mini")?
+                color_icons       = false,         -- colorize file|git icons
                 actions = {
                     -- actions inherit from 'actions.files' and merge
                     ["enter"]       = actions.buf_switch,

@@ -14,6 +14,8 @@ return {
                 handle = {
                     --color = colors.bg_highlight,
                     color = colors.terminal_black,
+                    --color = "#42992F",  -- 滚动条颜色（gruvbox示例）
+                    --blend = 30,         -- 透明度（0-100）
                 },
                 marks = {
                     Search = { color = colors.orange },
@@ -24,11 +26,11 @@ return {
                     Misc = { color = colors.purple },
                 },
                 -- 建议添加的额外配置（可选）
-                excluded_filetypes = { "prompt", "TelescopePrompt", "noice" },
+                excluded_filetypes = { "prompt", "TelescopePrompt", "noice" , "NvimTree"},
                 handlers = {
                     cursor = true,  -- 显示光标位置
-                    gitsigns = true -- 集成 gitsigns
-                }
+                    gitsigns = true, -- 集成 gitsigns
+                },
             })
         end,
 

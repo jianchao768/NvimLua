@@ -54,7 +54,29 @@ return {
                     show = {
                         git = true,  -- 显示 Git 图标
                         folder = true,
-                        file = true,
+                        folder_arrow = true,
+                        file = false,
+                    },
+                    glyphs = {
+                        default = "",   -- 文件图标为空
+                        folder = {
+                            arrow_closed = "▸",   -- 收起箭头
+                            arrow_open = "▾",     -- 展开箭头
+                            default = "",         -- 文件夹
+                            open = "",            -- 打开文件夹
+                            empty = "",           -- 空文件夹
+                            empty_open = "",      -- 打开空文件夹
+                        },
+                        git = {
+                            --unstaged = "✗",       -- 未暂存
+                            unstaged = "*",       -- 未暂存
+                            staged = "✓",         -- 已暂存
+                            unmerged = "═",       -- 冲突
+                            renamed = "➜",        -- 重命名
+                            untracked = "✩",      -- 未跟踪
+                            deleted = "⊖",        -- 删除
+                            ignored = "◌",        -- 忽略
+                        },
                     },
                 },
             },

@@ -30,3 +30,4 @@ vim.o.smartcase = true
 -- 文件类型检测
 vim.cmd("filetype plugin indent on")
 
+-- vim.opt.timeoutlen = 300  -- leader超时时间 可以让leader快捷键响应更快

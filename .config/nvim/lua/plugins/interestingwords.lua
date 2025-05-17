@@ -9,7 +9,7 @@ return {
             },
             search_count = true,         -- 显示当前词是第几个
             navigation = true,           -- 启用 n/N 跳转
-            scroll_center = true,        -- 跳转后居中
+            scroll_center = false,        -- 跳转后居中
             search_key = ";",    -- 添加/搜索 当前词
             cancel_search_key = "'", -- 移除当前词
             color_key = "m",     -- 为当前词指定颜色

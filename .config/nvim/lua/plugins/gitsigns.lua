@@ -6,12 +6,21 @@ return {
     event = {"BufReadPre"},
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {
+        --icons eg: '❚' ,
         signs = {
-            add          = { text = '❚' },
-            change       = { text = '❚' },
-            delete       = { text = '❚' },
-            topdelete    = { text = '❚' },
-            changedelete = { text = '❚' },
+            add          = { text = '┃' },
+            change       = { text = '┃' },
+            delete       = { text = '_' },
+            topdelete    = { text = '‾' },
+            changedelete = { text = '~' },
+            untracked    = { text = '┆' },
+        },
+        signs_staged = {
+            add          = { text = '┃' },
+            change       = { text = '┃' },
+            delete       = { text = '_' },
+            topdelete    = { text = '‾' },
+            changedelete = { text = '~' },
             untracked    = { text = '┆' },
         },
         signcolumn = true,  -- 始终显示标记列
@@ -21,7 +30,7 @@ return {
             interval = 1000,  -- 文件监视间隔（ms）
             follow_files = true
         },
-        attach_to_untracked = true, -- 显示未跟踪文件的标记
+        attach_to_untracked = false, -- 显示未跟踪文件的标记
         current_line_blame = true,  -- 默认关闭当前行 blame
         current_line_blame_opts = {
             virt_text = true, -- 虚拟文本显示
@@ -31,6 +40,8 @@ return {
             virt_text_priority = 100,
             use_focus = true,
         },
+        -- current_line_blame_formatter = ' >>> <committer_time:%Y-%m-%d %H:%M> <summary> <committer> <abbrev_sha>',
+
         on_attach = function()
             vim.cmd [[highlight GitSignsCurrentLineBlame guifg=#777777 gui=italic]]
         end,
