@@ -23,3 +23,5 @@ vim.keymap.set("n", ".", "$", opts)  -- 跳转到行尾
 --vim.keymap.set("n", ";", "*", opts)  -- 搜索当前单词
 vim.keymap.set("n", "'", ":noh<CR>", opts)  -- 取消搜索高亮
 
+-- 插件快捷键提前绑定
+vim.keymap.set("n", "<leader>n", ":NvimTreeToggle<CR>", { noremap = true, silent = true })

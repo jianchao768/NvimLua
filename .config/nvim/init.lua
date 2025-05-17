@@ -20,23 +20,18 @@ require("lazy").setup({
 
     -- 文件树和tag表、FZF
     require("plugins.nvim-tree"),
-    --require("plugins.aerial"), --bug贼多
     require("plugins.tagbar"),
     require("plugins.indent"),
     require("plugins.fzf"),
     require("plugins.bufferline"),
 
     -- 高亮和git提示
-    --require("plugins.nvim-treesitter"), --暂时不好用
     require("plugins.gitsigns"),
     require("plugins.vim-cpp-highlight"),
     require("plugins.interestingwords"),
 
-    -- LSP
-    require("lsp.mason"),
-    require("lsp.lspconfig"),
-    require("lsp.nvim-cmp"),
-    require("plugins.fidget"),
+    -- 补全
+    require("plugins.nvim-cmp"),
 
     -- 右侧滚动条，高亮当前单词
     require("plugins.nvim-scrollbar"),

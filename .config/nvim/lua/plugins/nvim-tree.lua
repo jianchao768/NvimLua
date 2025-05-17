@@ -33,7 +33,7 @@ return {
             vim.keymap.set('n', '?',     api.tree.toggle_help,           opts('Help'))
         end
 
-        vim.keymap.set("n", "<leader>n", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
+        --vim.keymap.set("n", "<leader>n", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 
         vim.g.loaded_netrw = 1
         vim.g.loaded_netrwPlugin = 1
