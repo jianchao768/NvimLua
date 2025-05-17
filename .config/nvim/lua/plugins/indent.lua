@@ -1,28 +1,24 @@
 return {
-    "shellRaining/hlchunk.nvim",
-    event = { "BufReadPost", "BufNewFile" }, -- 仅在打开文件时加载
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
-        vim.defer_fn(function ()
-            require("hlchunk").setup({
-                --chunk = { --函数框
-                --    enable = true,
-                --    notify = true, -- 进入代码块时通知
-                --    use_treesitter = true, -- 使用 Treesitter 解析代码块
-                --    style = "#806d9c", -- 高亮颜色（可换成其他颜色）
-                --},
-                indent = {
-                    enable = true,
-                    chars = { "│", "¦", "┆", "┊" }, -- 可视化字符
-                    use_treesitter = true,
-                },
-                --line_num = {
-                --    enable = true, -- 高亮当前函数行号
-                --    style = "#E98800",
-                --},
-                blank = {
-                    enable = false, -- 关闭空白字符高亮
-                },
-            })
-        end, 100)
+        local ibl = require("ibl")
+
+        ibl.setup({
+            indent = {
+                char = { "│", "¦", "┆", "┊" }, -- 可视化字符
+            },
+            scope = {
+                enabled = true,
+                show_start = false,
+                show_end = false,
+                highlight = { "Function", "Label" }, -- 可按需定制高亮
+            },
+            exclude = {
+                filetypes = { "help", "startify", "dashboard", "lazy", "neogitstatus", "NvimTree", "Trouble",},
+                buftypes = { "terminal", "nofile" },
+            },
+        })
     end,
 }
