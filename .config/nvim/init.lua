@@ -27,7 +27,7 @@ require("lazy").setup({
     -- 高亮和git提示
     require("plugins.gitsigns"),
     require("plugins.vim-cpp-highlight"),
-    require("plugins.interestingwords"),
+    require("plugins.neomark"),
 
     -- LSP
     require("lsp.mason"),
