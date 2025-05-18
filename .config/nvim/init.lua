@@ -14,9 +14,8 @@ require("config.autocmd")
 
 vim.opt.rtp:prepend("~/.config/nvim/lib/lazy.nvim-11.17.1")
 require("lazy").setup({
-    -- 颜色图标
+    -- 主题颜色
     require("plugins.colorscheme"),
-    require("plugins.nvim-web-devicons"),
 
     -- 文件树和tag表、FZF
     require("plugins.nvim-tree"),
@@ -30,8 +29,10 @@ require("lazy").setup({
     require("plugins.vim-cpp-highlight"),
     require("plugins.interestingwords"),
 
-    -- 补全
-    require("plugins.nvim-cmp"),
+    -- LSP
+    require("lsp.mason"),
+    require("lsp.lspconfig"),
+    require("lsp.nvim-cmp"),
 
     -- 右侧滚动条，高亮当前单词
     require("plugins.nvim-scrollbar"),
