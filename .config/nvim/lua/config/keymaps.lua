@@ -20,7 +20,7 @@ vim.keymap.set("n", "q", ":q<CR>", opts)  -- 退出
 vim.keymap.set("n", "s", "%", opts)  -- 跳转到匹配的括号
 vim.keymap.set("n", "f", "^", opts)  -- 跳转到行首
 vim.keymap.set("n", ".", "$", opts)  -- 跳转到行尾
---vim.keymap.set("n", ";", "*", opts)  -- 搜索当前单词
+vim.keymap.set("n", ";", "*", opts)  -- 搜索当前单词
 vim.keymap.set("n", "'", ":noh<CR>", opts)  -- 取消搜索高亮
 
 -- 插件快捷键提前绑定

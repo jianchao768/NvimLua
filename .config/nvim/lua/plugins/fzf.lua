@@ -83,9 +83,9 @@ return {
 
             -- 根据当前 buffer 状态决定打开方式
             if is_buffer_empty then
-                vim.cmd("edit " .. filepath)  -- 直接在当前空 buffer 打开
+                vim.cmd("edit " .. vim.fn.fnameescape(filepath))  -- 直接在当前空 buffer 打开
             else
-                vim.cmd("tabnew " .. filepath)  -- 新标签页打开
+                vim.cmd("tabnew " .. vim.fn.fnameescape(filepath))  -- 新标签页打开
             end
         end
         -------
