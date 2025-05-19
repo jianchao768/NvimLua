@@ -14,8 +14,9 @@ require("config.autocmd")
 
 vim.opt.rtp:prepend("~/.config/nvim/lib/lazy.nvim-11.17.1")
 require("lazy").setup({
-    -- 主题颜色
+    -- 颜色图标
     require("plugins.colorscheme"),
+    require("plugins.nvim-web-devicons"),
 
     -- 文件树和tag表、FZF
     require("plugins.nvim-tree"),

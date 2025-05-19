@@ -20,15 +20,16 @@ NvimLua 配置简化版本，没有lsp支持
 ### TODO:
 
 ```bash
-1.需要手动安装的模块：
-  ~/.fzf/
-  或者直接解压 fzf.tar.gz
+1.解压插件
+  tar -xJvf fzf.tar.xz -C ~/
 
-2.解压插件
   cd ~/.local/share/nvim/ 
-  tar -xzvf lazy.tar.gz 
+  tar -xJvf lazy.tar.xz 
 
-3.clangd 需要手动安装
+  cd ~/.local/share/fonts/
+  tar -xJvf UbuntuMono.tar.xz -C UbuntuMono
+
+2.clangd 需要手动安装
   放到：.local/share/nvim/mason/packages/clangd/clangd_20.1.0/bin/
 ```
 

@@ -28,11 +28,11 @@ return {
         --
         -- Leader+fb : 在当前buffer（当前文件）中搜素行 （无正则，速度快）
         --
-        -- Leader+gw : 在工作目录 搜索光标下的单词
-        -- Leader+gW : 在工作目录 搜索光标下的单词（包含符号）
-        -- Leader+gc : 在当前buffer（当前文件）中搜素
+        -- Leader+fw : 在工作目录 搜索光标下的单词
+        -- Leader+fW : 在工作目录 搜索光标下的单词（包含符号）
+        -- Leader+fc : 在当前buffer（当前文件）中搜素
         --
-        -- Leader+gr : 恢复上次fzf 搜索的状态
+        -- Leader+fr : 恢复上次fzf 搜索的状态
         ----
 		vim.keymap.set('n', '<leader>fg', function() fzf.grep(vim.tbl_extend("force",{ search = ""}, opts )) end, m)
 		vim.keymap.set('x', '<leader>fg', function() fzf.grep_visual(vim.tbl_extend("force",{ search = ""}, opts )) end, m)
@@ -136,9 +136,11 @@ return {
 				},
 			},
             files = {
-                actions = {
-                    ["default"] = smart_open_file,
-                },
+                --默认先把这个关了:
+                --actions = {
+                --    ["default"] = smart_open_file,
+                --},
+
 				-- previewer      = "bat",          -- uncomment to override previewer
 				-- (name from 'previewers' table)
 				-- set to 'false' to disable
