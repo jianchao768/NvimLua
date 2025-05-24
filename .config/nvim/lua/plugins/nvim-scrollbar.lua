@@ -7,6 +7,7 @@ return {
         --- Neovim 右侧滚动条 ---
         -------------------------
         "petertriho/nvim-scrollbar",
+        event = "BufWinEnter",
         dependencies = { "tokyonight.nvim" },
         config = function()
             local colors = require("tokyonight.colors").setup()

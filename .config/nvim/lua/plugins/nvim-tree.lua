@@ -42,7 +42,11 @@ return {
         require("nvim-tree").setup {
             on_attach = my_on_attach,
             view = {
-                width = 30, -- 侧边栏宽度
+                adaptive_size = true,  -- 根据内容自动调整宽度
+                width = {   -- 侧边栏宽度，避免过宽影响代码编辑区
+                    min = 20,
+                    max = 50,
+                },
                 side = "right", -- 显示在右侧
                 cursorline = true,  -- 高亮当前行
             },
@@ -50,6 +54,11 @@ return {
                 enable = true, -- 启用 Git 状态
             },
             renderer = {
+                indent_width = 1,  -- 减少缩进宽度（默认是2）
+                indent_markers = {
+                    enable = true,    -- 显示缩进标记线（帮助视觉区分）
+                },
+                group_empty = true,  -- 合并空目录
                 icons = {
                     show = {
                         git = true,  -- 显示 Git 图标

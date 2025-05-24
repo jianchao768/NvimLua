@@ -3,7 +3,7 @@ return {
     --- Neovim Git集成插件，在nvim中提供git状态 ---
     -----------------------------------------------
     "lewis6991/gitsigns.nvim",
-    event = {"BufReadPre"},
+    event = {"BufReadPre", "BufNewFile" },
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {
         --icons eg: '❚' ,
@@ -35,7 +35,7 @@ return {
         current_line_blame_opts = {
             virt_text = true, -- 虚拟文本显示
             virt_text_pos = "eol",
-            delay = 300, -- 延迟显示（ms）
+            delay = 100, -- 延迟显示（ms）默认1000ms
             ignore_whitespace = false,    -- 是否忽略空白修改
             virt_text_priority = 100,
             use_focus = true,
@@ -45,7 +45,7 @@ return {
         on_attach = function()
             vim.cmd [[highlight GitSignsCurrentLineBlame guifg=#777777 gui=italic]]
         end,
-        update_debounce = 200,      -- 降低更新频率（默认 100ms）
+        update_debounce = 200,      -- 降低标记列更新频率（默认 100ms）
         _threaded_diff = true,     -- 启用异步差异计算（Neovim 0.10+）
         --excluded_filetypes = { "alpha", "dashboard", "NvimTree" },
     },

@@ -43,27 +43,21 @@ return {
                     return vim_item
                 end,
             },
-            -- 预选项行为
+            -- 预选项行为，灰色虚影
             experimental = {
                 ghost_text = true, -- 显示补全提示
             },
         })
 
-        -- `/` 和 `:` 的命令行补全
-        cmp.setup.cmdline("/", {
-            mapping = cmp.mapping.preset.cmdline(),
-            sources = {
-                { name = "buffer" },
-            },
-        })
+        -- `/` 命令行补全
+        -- 由于Nvim和cmp限制，无法改动窗口大小，所以要么开要么关
+        --cmp.setup.cmdline("/", {
+        --    mapping = cmp.mapping.preset.cmdline(),
+        --    sources = {
+        --        { name = "buffer" },
+        --    },
+        --})
 
-        cmp.setup.cmdline(":", {
-            mapping = cmp.mapping.preset.cmdline(),
-            sources = {
-                { name = "path" },
-                { name = "cmdline" },
-            },
-        })
     end
 }
 
