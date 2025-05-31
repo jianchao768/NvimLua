@@ -48,8 +48,9 @@ return {
 
         -------
         -- 其他
-        -- Leader+tt : 查看tab
-        vim.keymap.set('n', '<leader>ft', "<cmd>FzfLua tabs<CR>")
+        -- Leader+ft : 查看tags
+        --vim.keymap.set('n', '<leader>ft', "<cmd>FzfLua tabs<CR>")
+        vim.keymap.set('n', '<leader>ft', function() fzf.tags() end, m)
 
         -------
         --- 实现vscode 类似的标签功能
