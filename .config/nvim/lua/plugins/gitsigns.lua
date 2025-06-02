@@ -40,7 +40,7 @@ return {
             virt_text_priority = 100,
             use_focus = true,
         },
-        -- current_line_blame_formatter = ' >>> <committer_time:%Y-%m-%d %H:%M> <summary> <committer> <abbrev_sha>',
+        current_line_blame_formatter = ' >>> <author>, <author_time:%R> - <summary> <abbrev_sha>',
 
         on_attach = function()
             vim.cmd [[highlight GitSignsCurrentLineBlame guifg=#777777 gui=italic]]
@@ -51,6 +51,23 @@ return {
     },
     config = function(_, opts)
         require("gitsigns").setup(opts)
+
+        -- 折叠函数（你需要定义一次即可）
+        _G.GitFoldExpr = function(lnum)
+            local line = vim.fn.getline(lnum)
+            if line:match("^diff %-%-git ") then
+                return ">1"
+            end
+            return "="
+        end
+        _G.GitFoldText = function()
+            local first = vim.fn.getline(vim.v.foldstart)
+            local fname = first:match("^diff %-%-git%s+a/(.-)%s+b/")
+            if fname then
+                return "+-- " .. fname .. "  ┄┄ [" .. (vim.v.foldend - vim.v.foldstart + 1) .. " lines]"
+            end
+            return vim.fn.getline(vim.v.foldstart)
+        end
 
         -------------------
         --- 这段是用来直接展示当前行git commit信息的代码
@@ -88,6 +105,15 @@ return {
             api.nvim_win_set_buf(0, commit_buf)
             vim.bo[commit_buf].filetype = 'git'
             vim.bo[commit_buf].bufhidden = 'wipe'
+            vim.bo[commit_buf].modifiable = false
+            vim.bo[commit_buf].readonly = true
+            --设置diff折叠
+            vim.api.nvim_buf_set_option(commit_buf, 'foldmethod', 'expr')
+            vim.api.nvim_buf_set_option(commit_buf, 'foldexpr', [[v:lua.GitFoldExpr(v:lnum)]])
+            vim.api.nvim_buf_set_option(commit_buf, 'foldtext', [[v:lua.GitFoldText()]])
+            vim.api.nvim_buf_set_option(commit_buf, 'foldenable', true)
+
+            vim.cmd("silent! normal! zM")
         end)
 
         -- 安全封装函数

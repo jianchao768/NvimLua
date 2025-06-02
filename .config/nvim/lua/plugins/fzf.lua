@@ -174,7 +174,7 @@ return {
 				--rg_opts = "--column --line-number --color=always --smart-case --ignore-file=.fzfignore",
                 ---- 参数 -----
                 --- no-heading: 不显把文件名单独列一行
-                rg_opts = "--column --line-number --no-heading --color=always --smart-case --ignore-file=.fzfignore --max-columns=4096 -e",
+                rg_opts = "--line-number --no-heading --color=always --smart-case --ignore-file=.fzfignore --max-columns=4096 -e",
                 grep_opts = "--binary-files=without-match --line-number --recursive --color=auto --perl-regexp -e",
 				previewer = "builtin",
 				jump_to_line = true,
