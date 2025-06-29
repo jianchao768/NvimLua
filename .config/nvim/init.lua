@@ -36,7 +36,7 @@ require("lazy").setup({
     require("lsp.nvim-cmp"),
 
     -- 右侧滚动条，高亮当前单词
-    require("plugins.nvim-scrollbar"),
+    --require("plugins.nvim-scrollbar"),
     require("plugins.vim-illuminate"),
     require("plugins.editor"),
 

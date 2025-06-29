@@ -40,10 +40,13 @@ return {
             })
             vim.cmd("colorscheme gruvbox")
             vim.cmd [[
-            highlight DiffAdd    cterm=reverse ctermfg=142 ctermbg=235 guifg=#b8bb26 guibg=#282828
-            highlight DiffChange cterm=reverse ctermfg=108 ctermbg=235 guifg=#8ec07c guibg=#282828
-            highlight DiffDelete cterm=reverse ctermfg=167 ctermbg=235 guifg=#fb4934 guibg=#282828
-            highlight DiffText   cterm=reverse ctermfg=214 ctermbg=235 guifg=#fabd2f guibg=#282828
+            augroup MyDiffHighlight
+            autocmd!
+            autocmd FileType diff highlight DiffAdd    cterm=reverse ctermfg=142 ctermbg=235 guifg=#b8bb26 guibg=#282828
+            autocmd FileType diff highlight DiffChange cterm=reverse ctermfg=108 ctermbg=235 guifg=#8ec07c guibg=#282828
+            autocmd FileType diff highlight DiffDelete cterm=reverse ctermfg=167 ctermbg=235 guifg=#fb4934 guibg=#282828
+            autocmd FileType diff highlight DiffText   cterm=reverse ctermfg=214 ctermbg=235 guifg=#fabd2f guibg=#282828
+            augroup END
             ]]
 
         end,

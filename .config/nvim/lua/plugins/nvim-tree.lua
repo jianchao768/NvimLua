@@ -45,7 +45,7 @@ return {
                 adaptive_size = true,  -- 根据内容自动调整宽度
                 width = {   -- 侧边栏宽度，避免过宽影响代码编辑区
                     min = 20,
-                    max = 50,
+                    max = 40,
                 },
                 side = "right", -- 显示在右侧
                 cursorline = true,  -- 高亮当前行
