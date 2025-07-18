@@ -26,8 +26,8 @@ NvimLua 配置简化版本，关闭lsp支持
   cd ~/.local/share/nvim/ 
   tar -xJvf lazy.tar.xz 
 
-  cd ~/.local/share/fonts/
-  tar -xJvf UbuntuMono.tar.xz -C UbuntuMono
+  cd ~/.local/share/fonts/UbuntuMono/
+  tar -xJvf UbuntuMono.tar.xz
   更新终端的字体缓存:
   fc-cache -fv
 
@@ -38,5 +38,11 @@ NvimLua 配置简化版本，关闭lsp支持
   更新软连接:
   ln -s ~/.local/share/nvim/mason/packages/clangd/clangd_20.1.0/bin/clangd ~/.local/share/nvim/mason/bin/clangd
   ln -s ~/.local/share/nvim/mason/packages/clangd/mason-schemas/lsp.json   ~/.local/share/nvim/mason/share/mason-schemas/lsp/clangd.json
+```
+
+or
+
+```
+./install_config.sh
 ```
 
