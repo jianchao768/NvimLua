@@ -3,6 +3,7 @@ return {
     --- 高亮光标下的相同单词 ---
     ----------------------------
     "RRethy/vim-illuminate",
+    event = "CursorHold",
     config = function()
         require("illuminate").configure({
             providers = { "lsp", "treesitter", "regex" }, -- 使用 LSP、Treesitter 和正则匹配高亮

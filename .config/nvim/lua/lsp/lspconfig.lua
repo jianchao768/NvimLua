@@ -1,7 +1,7 @@
 return {
     {
         ------------------------------------------------
-        ---Neovim LSP 客户端插件，提供代码补全、跳转 ---
+        ---Neovim LSP 客户端插件，但是关闭代码补全、跳转 ---
         ------------------------------------------------
         "neovim/nvim-lspconfig",
         config = function()
@@ -9,69 +9,59 @@ return {
             local util = require("lspconfig.util")
             -- 通用的 on_attach 函数，用于绑定按键和设置 LSP 客户端行为
             local on_attach = function(client, bufnr)
-                local opts = { buffer = bufnr, silent = true }
-
-                -- LSP 相关快捷键
-                vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-                vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-                vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-                vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-                vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-                vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+                -- 禁用所有功能，只保留 documentSymbol
+                    client.server_capabilities.definitionProvider = false
+                    client.server_capabilities.referencesProvider = false
+                    client.server_capabilities.hoverProvider = false
+                    client.server_capabilities.renameProvider = false
+                    client.server_capabilities.codeActionProvider = false
+                    client.server_capabilities.completionProvider = false
+                    client.server_capabilities.signatureHelpProvider = false
+                    client.server_capabilities.documentFormattingProvider = false
+                    client.server_capabilities.documentRangeFormattingProvider = false
+                    client.server_capabilities.documentHighlightProvider = false
+                    client.server_capabilities.semanticTokensProvider = nil
             end
-
-            -- Lua LSP配置
-            lspconfig.lua_ls.setup({
-                on_attach = on_attach,
-                settings = {
-                    Lua = {
-                        runtime = { version = "LuaJIT" },
-                        diagnostics = {
-                            globals = { "vim" }, --允许识别vim全局变量
-                            disable = { "lowercase-global" }, -- 关闭某些无关的警告
-                        },
-                        workspace = {
-                            checkThirdParty = false,
-                            --增加最大预加载文件数，但是超过数量会提示。。。
-                            --如果在拥有三套Nvim配置的文件夹下 打开test.lua 会一直加载
-                            --lua-language-server 进程CPU占用率90%，是个很大的bug
-                            --但是简单项目没问题
-                            maxPreload = 5000,
-                            preloadFileSize = 500, -- 允许最大文件大小(KB)
-                            ignoreDir = { -- 忽略无关目录
-                                ".git",
-                                "node_modules",
-                                "lib",
-                                "meta",
-                                "Nvim-lua-4.4",
-                                "build",
-                                ".cache",
-                            },
-                            library = false, -- 关闭worksapce 自动索引
-                            propmt = false, -- 关闭 "Increase upper limit" 提示，直接取消
-                        },
-                        telemetry = { enable = false }, -- 禁用 telemetry 数据收集
-                    },
-                },
-            })
-
-            -- 设置补全支持，这里去访问 nvim-cmp 配置的内容了
-            local capabilities = require("cmp_nvim_lsp").default_capabilities()
-            capabilities.textDocument.completion.completionItem.snippetSupport = true
 
             -- C/C++ LSP配置
             lspconfig.clangd.setup({
                 on_attach = on_attach,
-                capabilities = capabilities,
+                --仅使用默认功能
+                --capabilities = vim.lsp.protocol.make_client_capabilities(),
 
                 cmd = {
                     "clangd",
-                    "--background-index", -- 后台建立索引，提高补全速度
-                    "--clang-tidy",       -- 启用 clang-tidy 进行代码分析
-                    "--completion-style=detailed",  -- 详细补全信息
-                    "--header-insertion=never",  -- 关闭头文件自动插入
+                    "--background-index=false",      -- 禁用后台索引, 表示只分析当前份文件
+                    "--clang-tidy=false",       -- 禁用静态分析,比如不规范写法等
+                    "--header-insertion=never", -- 不自动插入头文件
+                    "--limit-references=0",     -- 不计算引用，减少计算量
+                    "--limit-results=10",       -- 限制引用、定义查找 返回的结果数量
+
+                    "--pch-storage=memory",     -- 加快性能
+                    "--log=error",              -- 只输出错误
+                    "--enable-config=false",    -- 禁用 .clangd 配置文件
+                },
+                init_options = {
+                    clangdFileStatus = false,  --提供文件状态反馈
+                    usePlaceholders = true,   --减少解析开销
+                    fallbackFlags = {},       -- 禁止添加默认编译参数
                 },
                 filetypes = { "c", "cpp", "objc", "objcpp" },  -- 限定文件类型
+                handlers = {
+                    -- 关闭其他 LSP 响应
+                    ["textDocument/publishDiagnostics"] = function() end,  --这个关闭了左侧的E W 显示，但是LSP还会分析
+                    ["textDocument/hover"] = function() end,
+                    ["textDocument/signatureHelp"] = function() end,
+                    ["textDocument/references"] = function() end,
+                    ["textDocument/definition"] = function() end,
+                    ["textDocument/implementation"] = function() end,
+                    ["textDocument/typeDefinition"] = function() end,
+                    ["textDocument/rename"] = function() end,
+                    ["textDocument/formatting"] = function() end,
+                    ["textDocument/rangeFormatting"] = function() end,
+                    ["workspace/executeCommand"] = function() end,
+                    ["workspace/symbol"] = function() end,
+                },
 
                 -- 自定义 root_dir 逻辑
                 -- 这样 clangd 会 依次查找 .clangd-root、.git、compile_commands.json、Android.mk，找到的第一个即为 根目录。
@@ -99,11 +89,26 @@ return {
         event = "LspAttach",
         config = function()
             require("lspsaga").setup({
-                lightbulb = {
-                    enable = true, --开启灯泡
-                    sign = false, --不在左侧显示灯泡
-                    virtual_text = true, -- 让灯泡显示再行尾
-                }
+                --禁用所有不需要的功能
+                definition = false,   --禁用跳转定义
+                finder = false,       --禁用查找引用
+                hover =false,         --禁用悬浮提示
+                code_action = false,  --禁用代码操作
+                rename = false,       --禁用重命名
+                diagnostic = { enable = false, },   --禁用诊断提示
+                lightbulb  = { enable = false, },   --禁用灯泡提示
+
+                symbol_in_winbar = {
+                    enable = true,
+                    separator = " > ",
+                    show_file = true,
+                },
+                outline = {
+                    enable = true,   -- 启用符号列表
+                    keys = {
+                        toggle_or_jump = "<CR>",
+                    },
+                },
             })
         end,
     },

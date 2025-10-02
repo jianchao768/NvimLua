@@ -7,14 +7,14 @@ return {
         cmd = { "Mason", "MasonInstall", "MasonUpdate"},
         config = function()
             require("mason").setup({
+                auto_update = false,  -- 完全禁用自动更新
                 ui = {
                     icons = {
                         package_installed = "✓",
                         package_pending = "➜",
                         package_uninstalled = "✗"
                     }
-                }
-            })
+                } })
         end,
     },
 
@@ -37,7 +37,7 @@ return {
 
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "clangd", "cmake", "jsonls" }, -- 需要的 LSP 服务器
+                ensure_installed = { "clangd",}, -- 需要的 LSP 服务器
                 automatic_installation = true,
             })
         end,
