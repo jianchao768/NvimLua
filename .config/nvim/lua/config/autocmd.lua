@@ -14,12 +14,20 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 
 -- 拷贝高亮显示
 vim.api.nvim_create_autocmd("TextYankPost", {
-	pattern = { "*" },
-	callback = function()
-		vim.highlight.on_yank({
-			timeout = 200,
-		})
-	end,
+  pattern = { "*" },
+  callback = function()
+    vim.highlight.on_yank({
+      timeout = 200,
+    })
+  end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "c", "cpp", "h", "hpp" },
+  callback = function()
+    vim.opt.shiftwidth = 4
+    vim.bo.commentstring = "// %s"
+  end,
 })
 
 -- 进入新文件时，自动切换当前目录为文件所在目录（lcd %:p:h）
@@ -52,28 +60,28 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 -- 如果当前窗口只有aerial 和 nvimtree，则都关了
 vim.api.nvim_create_autocmd("BufEnter", {
-    nested = true,
-    callback = function()
-        local wins = vim.api.nvim_list_wins()
-        local filetypes = {}
+  nested = true,
+  callback = function()
+    local wins = vim.api.nvim_list_wins()
+    local filetypes = {}
 
-        -- 获取所有窗口的文件类型
-        for _, win in ipairs(wins) do
-            local buf = vim.api.nvim_win_get_buf(win)
-            local ft = vim.bo[buf].filetype
-            filetypes[ft] = true
-        end
+    -- 获取所有窗口的文件类型
+    for _, win in ipairs(wins) do
+      local buf = vim.api.nvim_win_get_buf(win)
+      local ft = vim.bo[buf].filetype
+      filetypes[ft] = true
+    end
 
-        -- 处理 vi . 打开后只有 NvimTree 的情况
-        if vim.tbl_count(filetypes) == 1 and (filetypes["NvimTree"] or filetypes["Outline"]) then
-                vim.cmd("qall!") -- 直接退出 Neovim
-            return
-        end
+    -- 处理 vi . 打开后只有 NvimTree 的情况
+    if vim.tbl_count(filetypes) == 1 and (filetypes["NvimTree"] or filetypes["Outline"]) then
+      vim.cmd("qall!") -- 直接退出 Neovim
+      return
+    end
 
-        -- 如果窗口内 **只剩下** Outline 和 NvimTree，则退出 Neovim
-        if filetypes["NvimTree"] and filetypes["Outline"] and vim.tbl_count(filetypes) == 2 then
-            vim.cmd("qall!") -- 退出所有窗口
-        end
-    end,
+    -- 如果窗口内 **只剩下** Outline 和 NvimTree，则退出 Neovim
+    if filetypes["NvimTree"] and filetypes["Outline"] and vim.tbl_count(filetypes) == 2 then
+      vim.cmd("qall!") -- 退出所有窗口
+    end
+  end,
 })
 
