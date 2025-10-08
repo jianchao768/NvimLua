@@ -9,12 +9,12 @@
   </pre>
 </div>
 
-![show](./assets/show_sample4.png)
+![show](./assets/show_sample5.png)
 
 ### PS:
 ```
-NvimLua 配置简化版本，关闭lsp支持
-稳定、快捷、轻编辑
+NvimLua 配置main版本，打开lsp支持
+多功能支持
 ```
 
 ### TODO:

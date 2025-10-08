@@ -47,18 +47,15 @@ return {
     config = function()
       vim.api.nvim_set_hl(0, 'CustomContextVt', { fg = '#928374', bold = true, italic = true })
       require("nvim_context_vt").setup({
-        -- 是否启用插件
-        enabled = true,
-        -- 缩进深度：值越大，嵌套越深的结构才会显示
-        min_rows = 10,
-        -- 虚拟文本前缀
-        prefix = " ",  -- 你可以改成 "→ " 或空字符串
+        enabled = true, -- 是否启用插件
+        min_rows = 10,  -- 缩进深度：值越大，嵌套越深的结构才会显示
+        prefix = "",  -- 虚拟文本前缀 -- 󱞩,󱞿,→,
         -- 显示在行尾（默认），也可以改成行首
         highlight = "Comment",  -- 虚拟文本的颜色
         --highlight = 'CustomContextVt',
         disable_ft = { "markdown", "text" },  -- 在这些文件类型中禁用
-        -- 是否在折叠文本中显示上下文
-        disable_virtual_lines = false,
+        disable_virtual_lines = false,  -- 是否在折叠文本中显示上下文
+        disable_virtual_lines_ft = { 'yaml' },
         -- 如果使用 treesitter
         custom_parser = nil,
       })

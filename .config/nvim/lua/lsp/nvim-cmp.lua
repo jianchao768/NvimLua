@@ -5,7 +5,7 @@ return {
   "hrsh7th/nvim-cmp",
   event = "InsertEnter",
   dependencies = {
-    --{"hrsh7th/cmp-nvim-lsp", event = "InsertEnter"}, -- LSP源
+    {"hrsh7th/cmp-nvim-lsp", event = "InsertEnter"}, -- LSP源
     {"hrsh7th/cmp-buffer", event = "InsertEnter"},   -- Buffer 源
     {"hrsh7th/cmp-path", event = "InsertEnter" },    -- 路径补全
     {"hrsh7th/cmp-cmdline", event = "CmdlineEnter"},  -- 命令行补全
@@ -23,7 +23,7 @@ return {
         ["<C-Space>"] = cmp.mapping.complete(), -- `Ctrl+Space` 触发补全
       }),
       sources = cmp.config.sources({
-        --{ name = "nvim_lsp" },
+        { name = "nvim_lsp" },
         { name = "buffer" },
         { name = "path" },
       }),
@@ -36,7 +36,7 @@ return {
         format = function(entry, vim_item)
           -- 添加补全来源的标识
           vim_item.menu = ({
-            --nvim_lsp = "[LSP]",
+            nvim_lsp = "[LSP]",
             buffer = "[Buf]",
             path = "[Path]",
           })[entry.source.name]

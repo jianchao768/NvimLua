@@ -25,6 +25,7 @@ vim.o.scrolloff = 4                  -- 光标上下留 4 行缓冲
 vim.o.sidescrolloff = 10             -- 左右保留列数
 vim.opt.mouse = "a"                  -- 启用鼠标支持
 
+
 -- 搜索大小写不敏感
 vim.o.ignorecase = true
 vim.o.smartcase = true

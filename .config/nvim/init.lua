@@ -12,13 +12,14 @@ require("config.options")
 require("config.keymaps")
 require("config.autocmd")
 
-vim.opt.rtp:prepend("~/.config/nvim/lib/lazy.nvim-11.17.1")
+vim.opt.rtp:prepend("~/.config/lib/lazy.nvim-11.17.1")
 require("lazy").setup({
   -- 颜色图标
   require("plugins.colorscheme"),
   require("plugins.nvim-web-devicons"),
   require("plugins.bufferline"),
-  --require("plugins.lualine"),
+  require("plugins.lualine"),
+  require("plugins.noice"),
 
   -- 文件树和tag表、FZF
   require("plugins.nvim-tree"),
@@ -32,15 +33,18 @@ require("lazy").setup({
   require("plugins.neomark"),
 
   -- LSP
-  --require("lsp.mason"),
-  --require("lsp.lspconfig"),
+  require("lsp.mason"),
+  require("lsp.lspconfig"),
   require("lsp.nvim-cmp"),
+  require("plugins.nvim-treesitter"),
 
   -- 右侧滚动条，高亮当前单词
+  -- 项目管理，which-key
   --require("plugins.nvim-scrollbar"),
   require("plugins.vim-illuminate"),
   require("plugins.editor"),
   require("plugins.project"),
+  require("plugins.which-key"),
 
 },{
   install = { missing = false,},  -- 禁止自动安装缺失的插件

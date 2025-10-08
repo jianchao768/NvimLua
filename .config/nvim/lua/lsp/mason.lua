@@ -37,7 +37,7 @@ return {
 
       config = function()
         require("mason-lspconfig").setup({
-          ensure_installed = { "clangd",}, -- 需要的 LSP 服务器
+          ensure_installed = { "clangd", "lua_ls", "cmake"}, -- 需要的 LSP 服务器
           automatic_installation = true,
         })
       end,

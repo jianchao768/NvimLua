@@ -3,8 +3,8 @@ return {
   keys = {
     { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>",                    desc = "Bufferline Toggle Pin" },
     { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>",         desc = "Bufferline Delete Non-Pinned Buffers" },
-    { "bj",         "<Cmd>BufferLinePick<CR>",                         desc = "Bufferline Pick Buffer" },
-    { "bc",         "<Cmd>BufferLinePickClose<CR>",                    desc = "Bufferline Pick Buffer Close" },
+    { "<leader>bj", "<Cmd>BufferLinePick<CR>",                         desc = "Bufferline Pick Buffer" },
+    { "<leader>bd", "<Cmd>BufferLinePickClose<CR>",                    desc = "Bufferline Pick Buffer Close" },
     { "<C-Left>",   "<Cmd>BufferLineCyclePrev<CR>",                    desc = "Bufferline Cycle Prev" },
     { "<C-Right>",  "<Cmd>BufferLineCycleNext<CR>",                    desc = "Bufferline Cycle Next" },
     { "<A-h>",   "<Cmd>BufferLineCyclePrev<CR>",                       desc = "Bufferline Cycle Prev" },

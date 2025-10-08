@@ -125,16 +125,16 @@ UBUNTU_VERSION=$(lsb_release -rs | cut -d. -f1)
 
 if [ "$UBUNTU_VERSION" -ge 22 ]; then
     # Ubuntu 22 或更高版本
-    export PATH=~/.config/nvim/lib/nvim-linux-x86_64/lib/:${PATH}
-    export PATH=~/.config/nvim/lib/nvim-linux-x86_64/bin/:${PATH}
+    export PATH=~/.config/lib/nvim-linux-x86_64/lib/:${PATH}
+    export PATH=~/.config/lib/nvim-linux-x86_64/bin/:${PATH}
 elif [ "$UBUNTU_VERSION" = 20 ]; then
     # Ubuntu 20
-    export PATH=~/.config/nvim/lib/nvim-build20.04-v0.11/lib/:${PATH}
-    export PATH=~/.config/nvim/lib/nvim-build20.04-v0.11/bin/:${PATH}
+    export PATH=~/.config/lib/nvim-build20.04-v0.11/lib/:${PATH}
+    export PATH=~/.config/lib/nvim-build20.04-v0.11/bin/:${PATH}
 else
     # Ubuntu 18 及其他
-    export PATH=~/.config/nvim/lib/nvim-build18.04-v0.11/lib/:${PATH}
-    export PATH=~/.config/nvim/lib/nvim-build18.04-v0.11/bin/:${PATH}
+    export PATH=~/.config/lib/nvim-build18.04-v0.11/lib/:${PATH}
+    export PATH=~/.config/lib/nvim-build18.04-v0.11/bin/:${PATH}
 fi
 
 # FZF
@@ -142,9 +142,9 @@ fi
 export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border"
 
 #Rg
-export PATH=~/.config/nvim/lib/ripgrep-14.1.1-x86_64-unknown-linux-musl/:${PATH}
+export PATH=~/.config/lib/ripgrep-14.1.1-x86_64-unknown-linux-musl/:${PATH}
 #Fd
-export PATH=~/.config/nvim/lib/fd-v10.2.0-x86_64-unknown-linux-gnu/:${PATH}
+export PATH=~/.config/lib/fd-v10.2.0-x86_64-unknown-linux-gnu/:${PATH}
 
 
 #key-bind

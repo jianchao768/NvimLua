@@ -26,6 +26,11 @@ return {
     { "<leader>fr", "<cmd>FzfLua resume<CR>",                                              mode = "n", desc = "Resume last fzf" },
     { "<leader>ft", "<cmd>FzfLua tags<CR>",                                                mode = "n", desc = "Search tags" },
     { "<leader>p",  function() require("config.utils").fzf_projects() end,                 mode = "n", desc = "Search projects (fzf-lua + project.nvim)" },
+
+    { "<leader>ld", "<cmd>FzfLua lsp_definitions<CR>",                                     mode = "n", desc = "LSP Definitions"},
+    { "<leader>lr", "<cmd>FzfLua lsp_references<CR>",                                      mode = "n", desc = "LSP References"},
+    { ",ls", "<cmd>FzfLua diagnostics_document<CR>",                                      mode = "n", desc = "Document Diagnostics"},
+    { ",lw", "<cmd>FzfLua diagnostics_workspace<CR>",                                     mode = "n", desc = "Workspace Diagnostics"},
   },
   config = function()
     local fzf = require('fzf-lua')
