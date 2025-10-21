@@ -39,6 +39,9 @@ return {
       })
     end
   },
+  ----------------------
+  --- 中括号后面提示 ---
+  ----------------------
   {
     "andersevenrud/nvim_context_vt",
     event = "VeryLazy",
@@ -60,5 +63,19 @@ return {
         custom_parser = nil,
       })
     end,
+  },
+  --------------------
+  --- 符号对齐插件 ---
+  --------------------
+  {
+    "junegunn/vim-easy-align",
+    --event = "VeryLazy",
+    keys = {
+      -- 视觉模式：选中多行后按 `ga` 进入交互对齐
+      { "ga", "<Plug>(EasyAlign)", mode = "x", desc = "EasyAlign (visual mode)" },
+      -- 普通模式：对当前段落或文本对象进行对齐
+      { "ga", "<Plug>(EasyAlign)", mode = "n", desc = "EasyAlign (normal mode)" },
+    },
   }
+
 }
