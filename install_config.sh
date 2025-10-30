@@ -55,11 +55,11 @@ tar -xJf ~/.local/share/fonts/UbuntuMono/UbuntuMono.tar.xz -C ~/.local/share/fon
 tar -xJf ~/.local/share/nvim/lazy.tar.xz -C ~/.local/share/nvim/
 
 # 5. 恢复clangd 
-cat ~/.local/share/nvim/mason/packages/clangd/clangd_20.1.0/bin/clangd.tar.xz.part_a* > ~/.local/share/nvim/mason/packages/clangd/clangd_20.1.0/bin/clangd.tar.xz
-tar -xJf ~/.local/share/nvim/mason/packages/clangd/clangd_20.1.0/bin/clangd.tar.xz -C ~/.local/share/nvim/mason/packages/clangd/clangd_20.1.0/bin/
-
-ln -s ~/.local/share/nvim/mason/packages/clangd/clangd_20.1.0/bin/clangd ~/.local/share/nvim/mason/bin/clangd
-ln -s ~/.local/share/nvim/mason/packages/clangd/mason-schemas/lsp.json   ~/.local/share/nvim/mason/share/mason-schemas/lsp/clangd.json
+#cat ~/.local/share/nvim/mason/packages/clangd/clangd_20.1.0/bin/clangd.tar.xz.part_a* > ~/.local/share/nvim/mason/packages/clangd/clangd_20.1.0/bin/clangd.tar.xz
+#tar -xJf ~/.local/share/nvim/mason/packages/clangd/clangd_20.1.0/bin/clangd.tar.xz -C ~/.local/share/nvim/mason/packages/clangd/clangd_20.1.0/bin/
+#
+#ln -s ~/.local/share/nvim/mason/packages/clangd/clangd_20.1.0/bin/clangd ~/.local/share/nvim/mason/bin/clangd
+#ln -s ~/.local/share/nvim/mason/packages/clangd/mason-schemas/lsp.json   ~/.local/share/nvim/mason/share/mason-schemas/lsp/clangd.json
 
 set +x
 

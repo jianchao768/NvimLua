@@ -30,11 +30,7 @@ require("lazy").setup({
   require("plugins.gitsigns"),
   require("plugins.vim-cpp-highlight"),
   require("plugins.neomark"),
-
-  -- LSP
-  --require("lsp.mason"),
-  --require("lsp.lspconfig"),
-  require("lsp.nvim-cmp"),
+  require("plugins.nvim-cmp"),
 
   -- 右侧滚动条，高亮当前单词
   --require("plugins.nvim-scrollbar"),

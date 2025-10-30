@@ -20,7 +20,7 @@ NvimLua 配置简化版本，关闭lsp支持
 ### TODO:
 
 ```bash
-1.解压插件/字体
+解压插件/字体
   tar -xJvf fzf.tar.xz -C ~/
 
   cd ~/.local/share/nvim/ 
@@ -31,13 +31,6 @@ NvimLua 配置简化版本，关闭lsp支持
   更新终端的字体缓存:
   fc-cache -fv
 
-2.还原/解压clangd
-  cd .local/share/nvim/mason/packages/clangd/clangd_20.1.0/bin/
-  cat clangd.tar.xz.part_a* > clangd.tar.xz
-  tar -xJvf clangd.tar.xz
-  更新软连接:
-  ln -s ~/.local/share/nvim/mason/packages/clangd/clangd_20.1.0/bin/clangd ~/.local/share/nvim/mason/bin/clangd
-  ln -s ~/.local/share/nvim/mason/packages/clangd/mason-schemas/lsp.json   ~/.local/share/nvim/mason/share/mason-schemas/lsp/clangd.json
 ```
 
 or
