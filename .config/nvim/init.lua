@@ -17,7 +17,7 @@ require("lazy").setup({
   -- 颜色图标
   require("plugins.colorscheme"),
   require("plugins.nvim-web-devicons"),
-  require("plugins.bufferline"),
+  --require("plugins.bufferline"),
   require("plugins.lualine"),
   require("plugins.noice"),
 
@@ -36,7 +36,10 @@ require("lazy").setup({
   require("lsp.mason"),
   require("lsp.lspconfig"),
   require("lsp.nvim-cmp"),
+  require("plugins.trouble"),
+  require("plugins.nvim-navic"),
   require("plugins.nvim-treesitter"),
+  require("plugins.nvim-treesitter-context"),
 
   -- 右侧滚动条，高亮当前单词
   -- 项目管理，which-key

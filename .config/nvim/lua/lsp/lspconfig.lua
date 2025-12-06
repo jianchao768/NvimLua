@@ -18,8 +18,8 @@ return {
           vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc })
         end
 
-        bufmap("n", "gd", vim.lsp.buf.definition, "LSP [G]oto [D]efinition")
-        bufmap("n", "gr", vim.lsp.buf.references, "LSP [G]oto [R]eferences")
+        --bufmap("n", "gd", vim.lsp.buf.definition, "LSP [G]oto [D]efinition")
+        --bufmap("n", "gr", vim.lsp.buf.references, "LSP [G]oto [R]eferences")
         bufmap("n", "K", vim.lsp.buf.hover, "LSP Hover Documentation")
         bufmap("n", "<leader>rn", vim.lsp.buf.rename, "LSP [R]e[n]ame")
         bufmap("n", "<leader>ca", vim.lsp.buf.code_action, "LSP [C]ode [A]ction")

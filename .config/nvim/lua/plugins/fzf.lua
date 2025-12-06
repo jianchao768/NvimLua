@@ -12,6 +12,20 @@ return {
   keys = {
     -- File --
     { "<Space>f",   "<cmd>FzfLua files<CR>",                               mode = "n", desc = "Find files" },
+    { "<leader>ff",
+      function()
+        --local text = require("config.utils").get_visual_selection()
+        local text = require("fzf-lua.utils").get_visual_selection()
+        if text == "" then
+          vim.notify("No text selected!", vim.log.levels.WARN, { title = "fzf-lua" })
+          return
+        end
+
+        require("fzf-lua").files({ fzf_opts = { ["--query"] = text } })
+      end,
+      mode = "v",
+      desc = "Fzf: search file by selected text",
+    },
     { "<leader>fo", "<cmd>FzfLua oldfiles<CR>",                            mode = "n", desc = "Find old files" },
     { "<leader>fs", "<cmd>FzfLua git_status<CR>",                          mode = "n", desc = "Check git status" },
     { "<leader>p",  function() require("config.utils").fzf_projects() end, mode = "n", desc = "Search projects (fzf-lua + project.nvim)" },
