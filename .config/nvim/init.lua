@@ -19,7 +19,7 @@ require("lazy").setup({
   require("plugins.nvim-web-devicons"),
   --require("plugins.bufferline"),
   require("plugins.lualine"),
-  require("plugins.noice"),
+  --require("plugins.noice"),
 
   -- 文件树和tag表、FZF
   require("plugins.nvim-tree"),

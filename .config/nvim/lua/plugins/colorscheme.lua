@@ -5,6 +5,7 @@ return {
   {
     "ellisonleao/gruvbox.nvim",
     priority = 1000,
+    enabled = not require("config.utils").is_diff_mode(),
     config = function()
       require("gruvbox").setup({
         terminal_colors = true, -- add neovim terminal colors

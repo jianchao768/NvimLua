@@ -20,9 +20,24 @@ return {
     -- 主题选择，可以用 'auto', 'gruvbox', 'everforest', 等
 
     local navic_status, navic = pcall(require, 'nvim-navic')
+    --条件判断
+    local conditions = {
+      buffer_not_empty = function()
+        return vim.fn.empty(vim.fn.expand('%:t')) ~= 1
+      end,
+      hide_in_width = function()
+        return vim.fn.winwidth(0) > 80
+      end,
+      check_git_workspace = function()
+        local filepath = vim.fn.expand('%:p:h')
+        local gitdir = vim.fn.finddir('.git', filepath .. ';')
+        return gitdir and #gitdir > 0 and #gitdir < #filepath
+      end,
+    }
+
     require('lualine').setup {
       options = {
-        icons_enabled        = false,
+        icons_enabled        = true,
         theme                = 'gruvbox-material',
         component_separators = { left = "", right = "" },
         section_separators = { left = "", right = "" },
@@ -39,14 +54,22 @@ return {
           winbar     = 1000,
         }
       },
+
       sections = {
         lualine_a = { 'mode' },
-        lualine_b = { },
+        lualine_b = {
+          {
+            'diagnostics',
+            sources = { 'nvim_diagnostic' },
+            symbols = { error = ' ', warn = ' ', info = ' ' },
+          }
+        },
         lualine_c = {
           { 'filename',
             file_status = true,
             path = 1,   -- 0: 只文件名; 1: 相对路径; 2: 绝对路径; 3: ~ 替换家目录
             shorting_target = 40,-- 太长时缩写目标长度
+            cond = conditions.buffer_not_empty,  --文件不为空的时候显示
           },
           {
             function()
@@ -62,11 +85,15 @@ return {
               else
                 return
               end
-            end
+            end,
+            color = { fg = "#B8C3Ba" },
           },
         },
         lualine_x = {
-          'searchcount',
+          {
+            require("lsp.lsp_progress").get
+            --require("lsp.lsp_progress2")
+          },
           {
             function()
               local stbufnr = vim.api.nvim_win_get_buf(vim.g.statusline_winid or 0)
@@ -83,18 +110,33 @@ return {
             color = { fg = "#ff9e64" },
 
           },
-          'encoding', 'filetype' },
+          --'encoding','filetype', { 'filesize', cond = conditions.buffer_not_empty, }
+        },
         lualine_y = {
+          'selectioncount',
+          'location'
+          --{
+          --  function()
+          --    local line = vim.fn.line('.')
+          --    local col = vim.fn.col('.')
+          --    return string.format('%d,%d', line, col)
+          --  end,
+          --  padding = { left = 1, right = 1 },
+          --},
+        },
+        lualine_z = {
+          'progress' ,
           {
             function()
-              local line = vim.fn.line('.')
-              local col = vim.fn.col('.')
-              return string.format('%d,%d', line, col)
+              return vim.fn.fnamemodify(vim.loop.cwd(), ':t')
             end,
-            padding = { left = 1, right = 1 },
-          },
+            fmt = function(str)
+              --return "󰉋 " .. str
+              return " " .. str
+            end,
+            color = { fg = "#458588", bg = "#32302f" },
+          }
         },
-        lualine_z = { 'progress'},
       },
       inactive_sections = {
         lualine_a = {},
