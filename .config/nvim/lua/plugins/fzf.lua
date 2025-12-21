@@ -1,8 +1,7 @@
-local opts = {
+local local_opts = {
   search = "",
   fzf_opts = { ["--layout"] = "reverse" },
 }
-local searching_h_only = false
 
 return {
   ----------------------------
@@ -14,7 +13,7 @@ return {
     { "<Space>f",   "<cmd>FzfLua files<CR>",                               mode = "n", desc = "Find files" },
     { "<leader>ff",
       function()
-        --local text = require("config.utils").get_visual_selection()
+        --local text = require("configs.utils").get_visual_selection()
         local text = require("fzf-lua.utils").get_visual_selection()
         if text == "" then
           vim.notify("No text selected!", vim.log.levels.WARN, { title = "fzf-lua" })
@@ -26,40 +25,39 @@ return {
       mode = "v",
       desc = "Fzf: search file by selected text",
     },
-    { "<leader>fo", "<cmd>FzfLua oldfiles<CR>",                            mode = "n", desc = "Find old files" },
-    { "<leader>fs", "<cmd>FzfLua git_status<CR>",                          mode = "n", desc = "Check git status" },
-    { "<leader>p",  function() require("config.utils").fzf_projects() end, mode = "n", desc = "Search projects (fzf-lua + project.nvim)" },
+    { "<leader>fo", "<cmd>FzfLua oldfiles<CR>",                             mode = "n", desc = "Find old files" },
+    { "<leader>fs", "<cmd>FzfLua git_status<CR>",                           mode = "n", desc = "Check git status" },
+    { "<leader>p",  function() require("configs.utils").fzf_projects() end, mode = "n", desc = "Search projects (fzf-lua + project.nvim)" },
 
     -- Grep --
     { "<leader>fg", function() require("fzf-lua").grep(
-      vim.tbl_extend("force", { search  = "" }, opts)) end,                mode = "n", desc = "Grep selection" },
+      vim.tbl_extend("force", { search  = "" }, local_opts)) end,           mode = "n", desc = "Grep selection" },
     { "<leader>fg", function() require("fzf-lua").grep_visual(
-      vim.tbl_extend("force", { search  = "" }, opts)) end,                mode = "x", desc = "Grep visual selection" },
-    { "<leader>fl", "<cmd>FzfLua grep_last<CR>",                           mode = "n", desc = "Repeat last grep" },
-    { "<leader>fb", "<cmd>FzfLua blines<CR>",                              mode = "n", desc = "Search lines in current buffer" },
+      vim.tbl_extend("force", { search  = "" }, local_opts)) end,           mode = "x", desc = "Grep visual selection" },
+    { "<leader>fl", "<cmd>FzfLua grep_last<CR>",                            mode = "n", desc = "Repeat last grep" },
+    { "<leader>fb", "<cmd>FzfLua blines<CR>",                               mode = "n", desc = "Search lines in current buffer" },
 
-    { "<leader>fw", "<cmd>FzfLua grep_cword<CR>",                          mode = "n", desc = "Grep word under cursor" },
-    { "<leader>fW", "<cmd>FzfLua grep_cWORD<CR>",                          mode = "n", desc = "Grep WORD under cursor" },
-    { "<leader>fc", "<cmd>FzfLua grep_curbuf<CR>",                         mode = "n", desc = "Grep current buffer" },
+    { "<leader>fw", "<cmd>FzfLua grep_cword<CR>",                           mode = "n", desc = "Grep word under cursor" },
+    { "<leader>fW", "<cmd>FzfLua grep_cWORD<CR>",                           mode = "n", desc = "Grep WORD under cursor" },
+    { "<leader>fc", "<cmd>FzfLua grep_curbuf<CR>",                          mode = "n", desc = "Grep current buffer" },
 
-    { "<leader>fr", "<cmd>FzfLua resume<CR>",                              mode = "n", desc = "Resume last fzf" },
-    --{ "<leader>ft", "<cmd>FzfLua tags<CR>",                              mode = "n", desc = "Search tags" },
+    { "<leader>fr", "<cmd>FzfLua resume<CR>",                               mode = "n", desc = "Resume last fzf" },
+    --{ "<leader>ft", "<cmd>FzfLua tags<CR>",                               mode = "n", desc = "Search tags" },
     { "<leader>ft", function() require("fzf-lua").tags(
-      { prompt = "Tags> " }) end,                                          mode = "n", desc = "Search tags" },
+      { prompt = "Tags> " }) end,                                           mode = "n", desc = "Search tags" },
 
     -- LSP --
-    { "<leader>ld", "<cmd>FzfLua lsp_definitions<CR>",                     mode = "n", desc = "LSP Definitions"},
-    { "<leader>lr", "<cmd>FzfLua lsp_references<CR>",                      mode = "n", desc = "LSP References"},
-    { "<leader>lc", "<cmd>FzfLua diagnostics_document<CR>",                mode = "n", desc = "Document Diagnostics"},
-    { "<leader>lw", "<cmd>FzfLua diagnostics_workspace<CR>",               mode = "n", desc = "Workspace Diagnostics"},
-    { "<leader>ls", "<cmd>FzfLua lsp_document_symbols<CR>",                mode = "n", desc = "Document Symbols" },
-    { "<leader>lS", "<cmd>FzfLua lsp_workspace_symbols<CR>",               mode = "n", desc = "Workspace Symbols" },
+    { "<leader>ld", "<cmd>FzfLua lsp_definitions<CR>",                      mode = "n", desc = "LSP Definitions"},
+    { "<leader>lr", "<cmd>FzfLua lsp_references<CR>",                       mode = "n", desc = "LSP References"},
+    { "<leader>lc", "<cmd>FzfLua diagnostics_document<CR>",                 mode = "n", desc = "Document Diagnostics"},
+    { "<leader>lw", "<cmd>FzfLua diagnostics_workspace<CR>",                mode = "n", desc = "Workspace Diagnostics"},
+    { "<leader>ls", "<cmd>FzfLua lsp_document_symbols<CR>",                 mode = "n", desc = "Document Symbols" },
+    { "<leader>lS", "<cmd>FzfLua lsp_workspace_symbols<CR>",                mode = "n", desc = "Workspace Symbols" },
   },
-  config = function()
-    local fzf = require('fzf-lua')
-    local actions = require('fzf-lua.actions')
+  opts = function()
+    local searching_h_only = false
 
-    fzf.setup({
+    return {
       global_resume = true,
       global_resume_query = true,
 
@@ -176,7 +174,6 @@ return {
         sort_lastused = true,  -- sort buffers() by last used
         cwd_only      = false, -- 只显示当前工作目录下的buffer？
       },
-    })
-  end
-
+    }
+  end,
 }

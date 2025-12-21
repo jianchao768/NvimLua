@@ -1,0 +1,1 @@
+/home/ljc/.local/share/nvim/mason/packages/clang-format/venv/bin/clang-format-diff.py

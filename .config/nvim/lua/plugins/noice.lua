@@ -105,12 +105,12 @@ return {
       silent = false, -- set to true to not show a message if hover is not available
     },
   },
+
   config = function(_, opts)
     require("noice").setup(opts)
     if vim.o.filetype == "lazy" then
       vim.cmd([[messages clear]])
     end
-    require("noice").setup(opts)
   end,
 }
 

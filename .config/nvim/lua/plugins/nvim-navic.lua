@@ -1,8 +1,11 @@
-return  {
+return {
+  ----------------------------
+  ----  显示函数名的插件  ----
+  ----------------------------
   "SmiteshP/nvim-navic",
-  --event = "VeryLazy",
-  dependencies = { "neovim/nvim-lspconfig" },
-  init = function()
+  --ft = { "c", "cpp", "lua", "python", "java" },
+  event = {"VeryLazy"},
+  init = function ()
     -- PERF: Set it to true to update context only on CursorHold event. Could be usefull if
     -- you are facing performance issues on large files. Example usage
     vim.api.nvim_create_autocmd("BufEnter", {
@@ -13,46 +16,45 @@ return  {
       end,
     })
   end,
-  config = function()
-    require("nvim-navic").setup {
-      icons = {
-        File          = "󰈙 ",
-        Module        = " ",
-        Namespace     = "󰦮 ",
-        Package       = " ",
-        Class         = " ",
-        Method        = "ƒ ",
-        Property      = "󰜢 ",
-        Field         = " ",
-        Constructor   = " ",
-        Enum          = " ",
-        Interface     = " ",
-        Function      = "󰊕 ",
-        Variable      = "󰀫 ",
-        Constant      = "󰏿 ",
-        String        = " ",
-        Number        = "󰎠 ",
-        Boolean       = "󰨙 ",
-        Array         = "󰅪 ",
-        Object        = "󰅩 ",
-        Key           = "󰌋 ",
-        Null          = "󰟢 ",
-        EnumMember    = " ",
-        Struct        = "󰆧 ",
-        Event         = " ",
-        Operator      = " ",
-        TypeParameter = " ",
-      },
-      lsp = {
-        auto_attach = true,
-        preference = nil,
-      },
-      highlight = false,
-      separator = " > ",
-      depth_limit = 10,
-      depth_limit_indicator = "..",
-      safe_output = true,
-      click = true
-    }
-  end,
+
+  opts = {
+    icons = {
+      File          = "󰈙 ",
+      Module        = " ",
+      Namespace     = "󰦮 ",
+      Package       = " ",
+      Class         = " ",
+      Method        = "ƒ ",
+      Property      = "󰜢 ",
+      Field         = " ",
+      Constructor   = " ",
+      Enum          = " ",
+      Interface     = " ",
+      Function      = "󰊕 ",
+      Variable      = "󰀫 ",
+      Constant      = "󰏿 ",
+      String        = " ",
+      Number        = "󰎠 ",
+      Boolean       = "󰨙 ",
+      Array         = "󰅪 ",
+      Object        = "󰅩 ",
+      Key           = "󰌋 ",
+      Null          = "󰟢 ",
+      EnumMember    = " ",
+      Struct        = "󰆧 ",
+      Event         = " ",
+      Operator      = " ",
+      TypeParameter = " ",
+    },
+    lsp = {
+      auto_attach = true,
+      preference = nil,
+    },
+    highlight = false,
+    separator = " > ",
+    depth_limit = 10,
+    depth_limit_indicator = "..",
+    safe_output = true,
+    click = true
+  },
 }

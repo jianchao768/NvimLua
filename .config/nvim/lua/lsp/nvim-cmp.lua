@@ -1,63 +1,66 @@
 return {
-  ----------------------
-  ---  自动补全插件  ---
-  ----------------------
+  -----------------------
+  --   nvim-cmp 插件  ---
+  -----------------------
   "hrsh7th/nvim-cmp",
   event = "InsertEnter",
   dependencies = {
-    {"hrsh7th/cmp-nvim-lsp", event = "InsertEnter"}, -- LSP源
-    {"hrsh7th/cmp-buffer", event = "InsertEnter"},   -- Buffer 源
-    {"hrsh7th/cmp-path", event = "InsertEnter" },    -- 路径补全
-    {"hrsh7th/cmp-cmdline", event = "CmdlineEnter"},  -- 命令行补全
-    --"saadparwaiz1/cmp_luasnip", -- Snippets 源
-    --"L3MON4D3/LuaSnip",         -- Snippets 引擎
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path",
+    "hrsh7th/cmp-cmdline",
   },
-  config = function()
+
+  opts = function()
     local cmp = require("cmp")
 
-    cmp.setup({
+    return {
       mapping = cmp.mapping.preset.insert({
-        ["<Tab>"] = cmp.mapping.select_next_item(),
+        ["<Tab>"]   = cmp.mapping.select_next_item(),
         ["<S-Tab>"] = cmp.mapping.select_prev_item(),
-        ["<CR>"] = cmp.mapping.confirm({ select = true }),
-        ["<C-Space>"] = cmp.mapping.complete(), -- `Ctrl+Space` 触发补全
+        ["<CR>"]    = cmp.mapping.confirm({ select = true }),
+        ["<C-Space>"] = cmp.mapping.complete(),
       }),
+
       sources = cmp.config.sources({
         { name = "nvim_lsp" },
         { name = "buffer" },
         { name = "path" },
       }),
+
       completion = {
         completeopt = "menu,menuone,noinsert",
       },
 
-      --界面美化
       formatting = {
-        format = function(entry, vim_item)
-          -- 添加补全来源的标识
-          vim_item.menu = ({
+        format = function(entry, item)
+          item.menu = ({
             nvim_lsp = "[LSP]",
-            buffer = "[Buf]",
-            path = "[Path]",
+            buffer   = "[Buf]",
+            path     = "[Path]",
           })[entry.source.name]
-          return vim_item
+          return item
         end,
       },
-      -- 预选项行为，灰色虚影
+
       experimental = {
-        ghost_text = true, -- 显示补全提示
+        ghost_text = true,
       },
-    })
-
-    -- `/` 命令行补全
-    -- 由于Nvim和cmp限制，无法改动窗口大小，所以要么开要么关
-    --cmp.setup.cmdline("/", {
-    --    mapping = cmp.mapping.preset.cmdline(),
-    --    sources = {
-    --        { name = "buffer" },
-    --    },
-    --})
-
-  end
+    }
+  end,
+  --init = function()
+  --  -- Lazy 官方推荐：cmdline 配置用 CmdlineEnter 触发
+  --  vim.api.nvim_create_autocmd("CmdlineEnter", {
+  --    pattern = "/",
+  --    callback = function()
+  --      local cmp = require("cmp")
+  --      cmp.setup.cmdline("/", {
+  --        mapping = cmp.mapping.preset.cmdline(),
+  --        sources = {
+  --          { name = "buffer" },
+  --        },
+  --      })
+  --    end,
+  --  })
+  --end
 }
-

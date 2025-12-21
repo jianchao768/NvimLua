@@ -1,4 +1,7 @@
 return {
+  ------------------
+  ----  标题栏  ----
+  ------------------
   'akinsho/bufferline.nvim',
   keys = {
     { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>",                    desc = "Bufferline Toggle Pin" },

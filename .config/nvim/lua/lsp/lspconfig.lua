@@ -1,19 +1,22 @@
 return {
   {
-    ------------------------------------------------
+    ----------------------------------------------------
     ---Neovim LSP 客户端插件，但是关闭代码补全、跳转 ---
-    ------------------------------------------------
+    ----------------------------------------------------
     "neovim/nvim-lspconfig",
-    event = { "BufReadPre", "BufNewFile" },
-    enabled = not require("config.utils").is_diff_mode(),
-    config = function()
-      local lspconfig = require("lspconfig")
-      local mason_lspconfig = require("mason-lspconfig")
+    ft = { "lua", "c", "cpp" },
+    --event = { "BufReadPre", "BufNewFile" },
+    --如果打开event限制，ft就失效了。
+    --好像lsp不能放到VeryLazy,否则LSP检测会失效
+    enabled = not require("configs.utils").is_diff_mode(),
 
-      --------------------------------
-      -- 通用 on_attach 配置
-      --------------------------------
-      local on_attach = function(_, bufnr)
+    opts = function()
+      local lspconfig = require("lspconfig")
+
+      ------------------------------------------------
+      -- 通用 on_attach 
+      ------------------------------------------------
+      local function on_attach(_, bufnr)
         local bufmap = function(mode, lhs, rhs, desc)
           vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc })
         end
@@ -21,19 +24,19 @@ return {
         --bufmap("n", "gd", vim.lsp.buf.definition, "LSP [G]oto [D]efinition")
         --bufmap("n", "gr", vim.lsp.buf.references, "LSP [G]oto [R]eferences")
         bufmap("n", "K", vim.lsp.buf.hover, "LSP Hover Documentation")
-        bufmap("n", "<leader>rn", vim.lsp.buf.rename, "LSP [R]e[n]ame")
+        bufmap("n", "<leader>rn", vim.lsp.buf.rename, "LSP Rename")
         bufmap("n", "<leader>ca", vim.lsp.buf.code_action, "LSP [C]ode [A]ction")
         bufmap("n", "<leader>lf", function()
           vim.lsp.buf.format({ async = true })
-        end, "LSP [F]ormat buffer")
+        end, "LSP Format")
 
         -- 提示启用
         vim.notify("LSP attached: " .. vim.bo.filetype, vim.log.levels.INFO)
       end
 
-      --------------------------------
-      -- 通用能力配置
-      --------------------------------
+      ------------------------------------------------
+      -- 通用 capabilities
+      ------------------------------------------------
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities.textDocument.completion.completionItem = {
         documentationFormat = { "markdown", "plaintext" },   --告诉服务器可以返回 Markdown 格式的说明
@@ -53,48 +56,41 @@ return {
         },
       }
 
-      -- disable semanticTokens
-      local on_init = function(client, _)
-        if vim.fn.has "nvim-0.11" ~= 1 then
-          if client.supports_method "textDocument/semanticTokens" then
-            client.server_capabilities.semanticTokensProvider = nil
-          end
-        else
-          if client:supports_method "textDocument/semanticTokens" then
-            client.server_capabilities.semanticTokensProvider = nil
-          end
+      ------------------------------------------------
+      -- 禁用 semanticTokens
+      ------------------------------------------------
+      local function on_init(client, _)
+        if client.supports_method("textDocument/semanticTokens") then
+          client.server_capabilities.semanticTokensProvider = nil
         end
       end
 
-      --local ok_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-      --if ok_cmp then
-      --  capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
-      --end
-
-      --------------------------------
-      -- 语言服务器配置
-      --------------------------------
+      ------------------------------------------------
+      -- 各语言 LSP 配置
+      ------------------------------------------------
       local servers = {
-        -- C/C++
         clangd = {
           cmd = {
             "clangd",
             "--background-index",
             "--clang-tidy",
             "--completion-style=detailed",
-            "--fallback-style=Google", -- default format style
+            "--fallback-style=Google",
             "--header-insertion=never",
             "--pch-storage=memory",
-            "-j=8"
+            "-j=8",
           },
-          filetypes = { "c", "cpp", "objc", "objcpp" },  -- 只处理这些文件类型
-          root_dir = function (fname)
-            return lspconfig.util.root_pattern(".clangd-root", ".git", "compile_commands.json", "Android.mk")(fname)
-            or vim.loop.cwd()
+          filetypes = { "c", "cpp", "objc", "objcpp" },
+          root_dir = function(fname)
+            return lspconfig.util.root_pattern(
+              ".clangd-root",
+              ".git",
+              "compile_commands.json",
+              "Android.mk"
+            )(fname) or vim.loop.cwd()
           end,
         },
 
-        -- Lua
         lua_ls = {
           settings = {
             Lua = {
@@ -105,63 +101,73 @@ return {
           },
         },
 
-        -- CMake
         cmake = {},
       }
 
-      --------------------------------
-      -- 初始化所有服务器
-      --------------------------------
+      ------------------------------------------------
+      -- diagnostics 显示
+      ------------------------------------------------
+      local diagnostics = {
+        virtual_text = { prefix = "●", spacing = 2 },
+        signs = true,              --显示左侧符号
+        underline = true,          --错误显示下划线
+        update_in_insert = false,  --插入模式不更新诊断
+        severity_sort = true,      --按照严重程度排序
+        float = {
+          focusable = true,
+          style = "minimal",
+          source = "always",
+          border = "single",
+        },
+      }
+
+      return {
+        servers = servers,
+        capabilities = capabilities,
+        on_attach = on_attach,
+        on_init = on_init,
+        diagnostics = diagnostics,
+      }
+    end,
+    config = function(_, opts)
+      local lspconfig = require("lspconfig")
+      local mason_lspconfig = require("mason-lspconfig")
+
+      -- 配置 diagnostics
+      vim.diagnostic.config(opts.diagnostics)
+
       mason_lspconfig.setup_handlers({
         function(server_name)
-          local opts = servers[server_name] or {}
-          opts.on_init = on_init
-          opts.on_attach = on_attach
-          opts.capabilities = capabilities
-          opts.flags = { debounce_text_changes = 150 }  --延迟触发 LSP 的文本变化处理 ms
-          lspconfig[server_name].setup(opts)
+          local cfg = opts.servers[server_name] or {}
+          cfg.on_attach = opts.on_attach
+          cfg.on_init = opts.on_init
+          cfg.capabilities = opts.capabilities
+          cfg.flags = { debounce_text_changes = 150 }
+
+          lspconfig[server_name].setup(cfg)
         end,
       })
     end,
+  },
+  --{
+  --  -----------------------------------
+  --  -- nvim-lspconfig UI 增强 (可选) --
+  --  -----------------------------------
+  --  "nvimdev/lspsaga.nvim",
+  --  event = "LspAttach",
+  --  opts = {
+  --    symbol_in_winbar = {
+  --      enable = true,
+  --      separator = " > ",
+  --      show_file = true,
+  --    },
 
-    -- 配置 diagnostics 显示
-    vim.diagnostic.config({
-      virtual_text = {
-        prefix = "●",
-        spacing = 2,
-      },
-      signs = true,              --显示左侧符号
-      underline = true,          --错误显示下划线
-      update_in_insert = false,  --插入模式不更新诊断
-      severity_sort = true,      --按照严重程度排序
-      float = {
-        focusable = true,        --可以用 Ctrl-w 或 Esc 聚焦/关闭
-        style     = "minimal",   --简约风格
-        source = "always",
-        border = "single",
-      },
-    }),
-  },
-  {
-    -----------------------------------
-    -- nvim-lspconfig UI 增强 (可选) --
-    -----------------------------------
-    --"nvimdev/lspsaga.nvim",
-    --event = "LspAttach",
-    --config = function()
-    --  require("lspsaga").setup({
-    --    symbol_in_winbar = {
-    --      enable = true,
-    --      separator = " > ",
-    --      show_file = true,
-    --    },
-    --    outline = {
-    --      enable = true,   -- 启用符号列表
-    --      keys = {
-    --        toggle_or_jump = "<CR>",
-    --      },
-    --    },
-    --  })
-    --end,
-  },
+  --    outline = {
+  --      enable = true,
+  --      keys = {
+  --        toggle_or_jump = "<CR>",
+  --      },
+  --    },
+  --  },
+  --},
 }
