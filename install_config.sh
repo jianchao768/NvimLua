@@ -44,7 +44,12 @@ backup_if_exist "$HOME/.config/nvim"
 mkdir -p "$HOME/.config"
 cp -r .config/nvim "$HOME/.config/"
 
-# 5. 备份并复制 .local/share 目录下的内容（备份整个 ~/.local/share）
+# 5. 备份并复制 nvim 配置
+backup_if_exist "$HOME/.config/lib/"
+mkdir -p "$HOME/.config"
+cp -r .config/lib/ "$HOME/.config/"
+
+# 6. 备份并复制 .local/share 目录下的内容（备份整个 ~/.local/share）
 #backup_if_exist "$HOME/.local/share/fonts/"  -- 暂时不备份，防止删除原有字体
 backup_if_exist "$HOME/.local/share/nvim/"
 mkdir -p "$HOME/.local/share"
@@ -58,8 +63,8 @@ tar -xJf ~/.local/share/nvim/lazy.tar.xz -C ~/.local/share/nvim/
 cat ~/.local/share/nvim/mason/packages/clangd/clangd_20.1.0/bin/clangd.tar.xz.part_a* > ~/.local/share/nvim/mason/packages/clangd/clangd_20.1.0/bin/clangd.tar.xz
 tar -xJf ~/.local/share/nvim/mason/packages/clangd/clangd_20.1.0/bin/clangd.tar.xz -C ~/.local/share/nvim/mason/packages/clangd/clangd_20.1.0/bin/
 
-ln -s ~/.local/share/nvim/mason/packages/clangd/clangd_20.1.0/bin/clangd ~/.local/share/nvim/mason/bin/clangd
-ln -s ~/.local/share/nvim/mason/packages/clangd/mason-schemas/lsp.json   ~/.local/share/nvim/mason/share/mason-schemas/lsp/clangd.json
+ln -sf ~/.local/share/nvim/mason/packages/clangd/clangd_20.1.0/bin/clangd ~/.local/share/nvim/mason/bin/clangd
+ln -sf ~/.local/share/nvim/mason/packages/clangd/mason-schemas/lsp.json   ~/.local/share/nvim/mason/share/mason-schemas/lsp/clangd.json
 
 set +x
 

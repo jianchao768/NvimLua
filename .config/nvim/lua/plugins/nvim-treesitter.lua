@@ -1,23 +1,14 @@
-return {
-  "nvim-treesitter/nvim-treesitter",
-  enabled = not require("config.utils").is_diff_mode(),
-  build = ":TSUpdate", -- 自动更新解析器
-  event = { "BufReadPost", "BufNewFile" }, -- 打开文件时加载
-  opts = {
-    ensure_installed = {
-      "c",
-      "cpp",
-      "cmake",
-      "lua",
-    },
+local M = {}
 
+M.opts = {
+    ensure_installed = { "c", "cpp", "cmake", "lua" },
     sync_install = false,   -- 同步安装（推荐 false：异步下载更快）
     auto_install = true,    -- 自动安装缺失的解析器
 
     highlight = {
       enable = false,        -- 是否使用高亮,关闭高亮之后，cpp文件无法使用nvim_context_vt
       disable = function(lang, buf)
-        local max_filesize = 1024 * 1024  -- 1MB
+        local max_filesize = 5 * 1024 * 1024  -- 5MB
         local uv = vim.uv or vim.loop     -- ✅ 兼容新旧版本
         local ok, stats = pcall(uv.fs_stat, vim.api.nvim_buf_get_name(buf))
         if ok and stats and stats.size > max_filesize then
@@ -27,9 +18,11 @@ return {
       additional_vim_regex_highlighting = false,
     },
 
-    indent = { enable = false, },        -- 启用基于语法树的缩进
+    indent = { enable = true },
 
-    incremental_selection = {  --扩展选取功能
+    -- 扩展选取功能
+    -- 关闭高亮后，可以手动触发这个选择器，来使能这个插件
+    incremental_selection = {
       enable = true,
       keymaps = {
         init_selection = "<CR>",        -- 初始化选择
@@ -74,10 +67,7 @@ return {
     --    },
     --  },
     --}
-
-  },
-
-  config = function(_, opts)
-    require("nvim-treesitter.configs").setup(opts)
-  end,
 }
+
+return M
+
