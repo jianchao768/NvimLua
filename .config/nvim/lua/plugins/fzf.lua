@@ -13,17 +13,14 @@ return {
     { "<Space>f",   "<cmd>FzfLua files<CR>",                               mode = "n", desc = "Find files" },
     { "<leader>ff",
       function()
-        --local text = require("configs.utils").get_visual_selection()
         local text = require("fzf-lua.utils").get_visual_selection()
         if text == "" then
           vim.notify("No text selected!", vim.log.levels.WARN, { title = "fzf-lua" })
           return
         end
-
         require("fzf-lua").files({ fzf_opts = { ["--query"] = text } })
       end,
-      mode = "v",
-      desc = "Fzf: search file by selected text",
+      mode = "v", desc = "Fzf: search file by selected text",
     },
     { "<leader>fo", "<cmd>FzfLua oldfiles<CR>",                             mode = "n", desc = "Find old files" },
     { "<leader>fs", "<cmd>FzfLua git_status<CR>",                           mode = "n", desc = "Check git status" },
@@ -40,11 +37,39 @@ return {
     { "<leader>fw", "<cmd>FzfLua grep_cword<CR>",                           mode = "n", desc = "Grep word under cursor" },
     { "<leader>fW", "<cmd>FzfLua grep_cWORD<CR>",                           mode = "n", desc = "Grep WORD under cursor" },
     { "<leader>fc", "<cmd>FzfLua grep_curbuf<CR>",                          mode = "n", desc = "Grep current buffer" },
+    { "<leader>fc",
+      function()
+        local text = require("fzf-lua.utils").get_visual_selection()
+        if text == "" then
+          vim.notify("No text selected!", vim.log.levels.WARN, { title = "fzf-lua" })
+          return
+        end
+        require("fzf-lua").grep_curbuf({
+          prompt = "GCurbuf> ",
+          fzf_opts = { ["--query"] = text }
+        })
+      end,
+      mode = "v", desc = "Fzf: search selected text int current buffer",
+    },
 
     { "<leader>fr", "<cmd>FzfLua resume<CR>",                               mode = "n", desc = "Resume last fzf" },
     --{ "<leader>ft", "<cmd>FzfLua tags<CR>",                               mode = "n", desc = "Search tags" },
     { "<leader>ft", function() require("fzf-lua").tags(
       { prompt = "Tags> " }) end,                                           mode = "n", desc = "Search tags" },
+    { "<leader>ft",
+      function()
+        local text = require("fzf-lua.utils").get_visual_selection()
+        if text == "" then
+          vim.notify("No text selected!", vim.log.levels.WARN, { title = "fzf-lua" })
+          return
+        end
+        require("fzf-lua").tags({
+          prompt = "Tags> ",
+          fzf_opts = { ["--query"] = text },
+        })
+      end,
+      mode = "v", desc = "Search tags by selected text",
+    },
 
     -- LSP --
     { "<leader>ld", "<cmd>FzfLua lsp_definitions<CR>",                      mode = "n", desc = "LSP Definitions"},
@@ -173,6 +198,17 @@ return {
         color_icons   = false, -- colorize file|git icons
         sort_lastused = true,  -- sort buffers() by last used
         cwd_only      = false, -- 只显示当前工作目录下的buffer？
+      },
+      grep_cword = {
+        prompt = "Word❯ ",
+      },
+      oldfiles = {
+        prompt = "History❯ ",
+      },
+      git = {
+        files = { prompt = "GitFiles❯ " },
+        status = { prompt = "GitStatus❯ " },
+        commits = { prompt = "Commits❯ " },
       },
     }
   end,

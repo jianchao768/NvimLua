@@ -1,7 +1,8 @@
 return {
   {
     "octol/vim-cpp-enhanced-highlight",
-    ft = { "cpp", "c", "hpp", "h" },
+    --ft = { "cpp", "c", "hpp", "h" },
+    event = "User FilePost",
     init = function()
       -- 可选配置项，按需开启
       --高亮MyClass::func 里面的MyClass::

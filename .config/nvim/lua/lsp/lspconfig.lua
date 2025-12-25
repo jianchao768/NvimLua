@@ -4,10 +4,11 @@ return {
     ---Neovim LSP 客户端插件，但是关闭代码补全、跳转 ---
     ----------------------------------------------------
     "neovim/nvim-lspconfig",
-    ft = { "lua", "c", "cpp" },
+    --ft = { "lua", "c", "cpp" },
     --event = { "BufReadPre", "BufNewFile" },
     --如果打开event限制，ft就失效了。
     --好像lsp不能放到VeryLazy,否则LSP检测会失效
+    event = "User FilePost",
     enabled = not require("configs.utils").is_diff_mode(),
 
     opts = function()

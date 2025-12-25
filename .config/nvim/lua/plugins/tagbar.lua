@@ -2,6 +2,9 @@ return {
   -------------------------------
   --- Tagbar 侧边栏显示函数名 ---
   -------------------------------
+  --- fd -e h -e cpp -e c <dir> > files
+  --- ctags -L files
+  --- --- --- --- --- --- --- ---
   "preservim/tagbar",
   cmd = "TagbarToggle",
   keys = {

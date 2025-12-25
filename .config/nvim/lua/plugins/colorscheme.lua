@@ -5,6 +5,7 @@ return {
   "ellisonleao/gruvbox.nvim",
   lazy = false,            -- 主题类插件允许 early load
   priority = 1000,         -- 确保最早
+  --event = "User FilePost",
   --enabled = not require("configs.utils").is_diff_mode(),
   config = function()
     require("gruvbox").setup({
