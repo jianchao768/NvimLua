@@ -59,13 +59,24 @@ cp -r .local/share/nvim "$HOME/.local/share/"
 tar -xJf ~/.local/share/fonts/UbuntuMono/UbuntuMono.tar.xz -C ~/.local/share/fonts/UbuntuMono/
 tar -xJf ~/.local/share/nvim/lazy.tar.xz -C ~/.local/share/nvim/
 
-# 5. 恢复clangd 
+# 7. 恢复clangd 
 cat ~/.local/share/nvim/mason/packages/clangd/clangd_20.1.0/bin/clangd.tar.xz.part_a* > ~/.local/share/nvim/mason/packages/clangd/clangd_20.1.0/bin/clangd.tar.xz
 tar -xJf ~/.local/share/nvim/mason/packages/clangd/clangd_20.1.0/bin/clangd.tar.xz -C ~/.local/share/nvim/mason/packages/clangd/clangd_20.1.0/bin/
 
 ln -sf ~/.local/share/nvim/mason/packages/clangd/clangd_20.1.0/bin/clangd ~/.local/share/nvim/mason/bin/clangd
 ln -sf ~/.local/share/nvim/mason/packages/clangd/mason-schemas/lsp.json   ~/.local/share/nvim/mason/share/mason-schemas/lsp/clangd.json
 
+# 8. 添加定时清理 lsp.log，防止占用过多内存
+cp -r .config/logrotate.d/ "$HOME/.config/"
+
+LOGROTATE=$(command -v logrotate)
+
+CRON_JOB="0 3 * * * $LOGROTATE -s $HOME/.local/state/logrotate.status $HOME/.config/logrotate.d/nvim"
+
+(crontab -l 2>/dev/null | grep -F "$CRON_JOB") >/dev/null || \
+(crontab -l 2>/dev/null; echo "$CRON_JOB") | crontab -
+
+source ~/.bashrc
 set +x
 
 echo "配置安装完成！备份文件在 $BACKUP_DIR"
