@@ -72,12 +72,13 @@ return {
     },
 
     -- LSP --
-    { "<leader>ld", "<cmd>FzfLua lsp_definitions<CR>",                      mode = "n", desc = "LSP Definitions"},
-    { "<leader>lr", "<cmd>FzfLua lsp_references<CR>",                       mode = "n", desc = "LSP References"},
-    { "<leader>lc", "<cmd>FzfLua diagnostics_document<CR>",                 mode = "n", desc = "Document Diagnostics"},
-    { "<leader>lw", "<cmd>FzfLua diagnostics_workspace<CR>",                mode = "n", desc = "Workspace Diagnostics"},
-    { "<leader>ls", "<cmd>FzfLua lsp_document_symbols<CR>",                 mode = "n", desc = "Document Symbols" },
-    { "<leader>lS", "<cmd>FzfLua lsp_workspace_symbols<CR>",                mode = "n", desc = "Workspace Symbols" },
+    { "<leader>lw", function() require("fzf-lua").diagnostics_workspace({ prompt = "[LSP] Diagnostics> ", }) end, mode = "n", desc = "LSP Diagnostics", },
+    { "<leader>ld", function() require("fzf-lua").lsp_definitions({ prompt       = "[LSP] Definitions> ", }) end, mode = "n", desc = "LSP Definitions", },
+    { "<leader>lr", function() require("fzf-lua").lsp_references({ prompt        = "[LSP] References> ", }) end, mode = "n", desc = "LSP References", },
+    { "<leader>lc", function() require("fzf-lua").diagnostics_document({ prompt  = "[LSP] Doc_Diagnostics> ", }) end, mode = "n", desc = "LSP Document Diagnostics", },
+    { "<leader>lw", function() require("fzf-lua").diagnostics_workspace({ prompt = "[LSP] WS_Diagnostics> ", }) end, mode = "n", desc = "LSP Workspace Diagnostics", },
+    { "<leader>ls", function() require("fzf-lua").lsp_document_symbols({ prompt  = "[LSP] Doc_Symbols> ", }) end, mode = "n", desc = "LSP Document Symbols", },
+    { "<leader>lS", function() require("fzf-lua").lsp_workspace_symbols({ prompt = "[LSP] WS_Symbols> ", }) end, mode = "n", desc = "LSP Workspace Symbols", },
   },
   opts = function()
     local searching_h_only = false
@@ -184,10 +185,10 @@ return {
             and "--line-number --no-heading --color=always --smart-case --max-columns=4096 --column -e"
             or "--line-number --no-heading --color=always --smart-case --max-columns=4096 --column -g '!*.h' -e"
             local new_prompt = searching_h_only and "Rg_.h> " or "Rg❯ "
-            fzf.live_grep({
+            require('fzf-lua').live_grep({
               rg_opts = new_rg_opts,
-              prompt = new_prompt,
-              search = opts.query or "",   -- 保持搜索内容
+              prompt  = new_prompt,
+              search  = opts.query or "",   -- 保持搜索内容
             })
           end,
         },
@@ -206,8 +207,8 @@ return {
         prompt = "History❯ ",
       },
       git = {
-        files = { prompt = "GitFiles❯ " },
-        status = { prompt = "GitStatus❯ " },
+        files   = { prompt = "GitFiles❯ " },
+        status  = { prompt = "GitStatus❯ " },
         commits = { prompt = "Commits❯ " },
       },
     }

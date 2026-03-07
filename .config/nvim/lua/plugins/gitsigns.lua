@@ -28,11 +28,12 @@ return {
     numhl      = false, -- 不要用行号高亮
     linehl     = false, -- 不要用行高亮
     watch_gitdir = {
-      interval = 1000,  -- 文件监视间隔（ms）
-      follow_files = true
+      interval = 2000,  -- 文件监视间隔（ms）
+      follow_files = true,
     },
+
     attach_to_untracked = false, -- 显示未跟踪文件的标记
-    current_line_blame = true,  -- 默认关闭当前行 blame
+    current_line_blame  = true,  -- 默认关闭当前行 blame
     current_line_blame_opts = {
       virt_text = true, -- 虚拟文本显示
       virt_text_pos = "eol",
@@ -65,7 +66,7 @@ return {
       local first = vim.fn.getline(vim.v.foldstart)
       local fname = first:match("^diff %-%-git%s+a/(.-)%s+b/")
       if fname then
-        return "+-- " .. fname .. "  ┄┄ [" .. (vim.v.foldend - vim.v.foldstart + 1) .. " lines]"
+        return "+-- " .. fname .. " | " .. (vim.v.foldend - vim.v.foldstart + 1) .. " "
       end
       return vim.fn.getline(vim.v.foldstart)
     end

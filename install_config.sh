@@ -66,33 +66,23 @@ tar -xJf ~/.local/share/nvim/mason/packages/clangd/clangd_20.1.0/bin/clangd.tar.
 ln -sf ~/.local/share/nvim/mason/packages/clangd/clangd_20.1.0/bin/clangd ~/.local/share/nvim/mason/bin/clangd
 ln -sf ~/.local/share/nvim/mason/packages/clangd/mason-schemas/lsp.json   ~/.local/share/nvim/mason/share/mason-schemas/lsp/clangd.json
 
+# ---------------------------------------------------------------------------------------------------------------------
 # 8. 添加定时清理 lsp.log，防止占用过多内存
 cp -r .config/logrotate.d/ "$HOME/.config/"
 
-LOGROTATE=$(command -v logrotate)
+JOB="0 3 * * * $(command -v logrotate) -s \$HOME/.local/state/logrotate.status \$HOME/.config/logrotate.d/nvim"
 
-CRON_JOB="0 3 * * * $LOGROTATE -s $HOME/.local/state/logrotate.status $HOME/.config/logrotate.d/nvim"
+CRON="$(crontab -l 2>/dev/null || true)"
 
-(crontab -l 2>/dev/null | grep -F "$CRON_JOB") >/dev/null || \
-(crontab -l 2>/dev/null; echo "$CRON_JOB") | crontab -
+if ! printf "%s\n" "$CRON" | grep -qxF "$JOB"; then
+  (printf "%s\n" "$CRON"; printf "%s\n" "$JOB") | crontab -
+fi
+# ---------------------------------------------------------------------------------------------------------------------
 
-source ~/.bashrc
 set +x
 
 echo "配置安装完成！备份文件在 $BACKUP_DIR"
-
 echo
-echo "展示相关工具版本信息："
-echo "-----------------------"
-
-echo -n "fzf  版本: "
-fzf --version || echo "fzf 未安装或不可用"
-
-echo -n "fd   版本: "
-fd --version || echo "fd 未安装或不可用"
-
-echo -n "rg   版本: "
-rg --version | head -n 1 || echo "rg 未安装或不可用"
-
-echo -n "nvim 版本: "
-nvim --version | head -n 1 || echo "nvim 未安装或不可用"
+echo "请执行以下命令刷新环境："
+echo
+echo "    source ~/.bashrc"
