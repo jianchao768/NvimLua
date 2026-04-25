@@ -17,7 +17,7 @@ return {
       ------------------------------------------------
       -- 通用 on_attach 
       ------------------------------------------------
-      local function on_attach(_, bufnr)
+      local function on_attach(client, bufnr)
         local bufmap = function(mode, lhs, rhs, desc)
           vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc })
         end
@@ -27,35 +27,59 @@ return {
         bufmap("n", "K", vim.lsp.buf.hover, "LSP Hover Documentation")
         bufmap("n", "<leader>rn", vim.lsp.buf.rename, "LSP Rename")
         bufmap("n", "<leader>ca", vim.lsp.buf.code_action, "LSP [C]ode [A]ction")
+
+        -- diagnostics
+        bufmap("n", "[d", vim.diagnostic.goto_prev)
+        bufmap("n", "]d", vim.diagnostic.goto_next)
+        bufmap("n", "<leader>e", vim.diagnostic.open_float)
+
+        -- format
         bufmap("n", "<leader>lf", function()
           vim.lsp.buf.format({ async = true })
         end, "LSP Format")
 
+        -- inlay hints
+        if client.server_capabilities.inlayHintProvider then
+          vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+        end
+
+        -- :LspCaps
+        vim.api.nvim_buf_create_user_command(bufnr, "LspCaps", function()
+          print(vim.inspect(client.server_capabilities))
+        end, {})
+
         -- 提示启用
         vim.notify("LSP attached: " .. vim.bo.filetype, vim.log.levels.INFO)
+        --vim.notify("LSP attached: " .. client.name, vim.log.levels.INFO, { title = "LSP" })
       end
 
       ------------------------------------------------
       -- 通用 capabilities
       ------------------------------------------------
       local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities.textDocument.completion.completionItem = {
-        documentationFormat = { "markdown", "plaintext" },   --告诉服务器可以返回 Markdown 格式的说明
-        snippetSupport = true,                               --支持 snippet 占位符
-        preselectSupport = true,                             --支持自动预选补全项
-        insertReplaceSupport = true,                         --支持插入和替换模式的补全
-        labelDetailsSupport = true,                          --补全标签支持附加信息
-        deprecatedSupport = true,                            --支持标记废弃的补全项
-        commitCharactersSupport = true,                      --支持 commit 字符
-        tagSupport = { valueSet = { 1 } },                   --支持标签标记，这里 { valueSet = {1} } 通常表示废弃标签。
-        resolveSupport = {            --当需要补全项的更多信息时，可以请求额外字段：
-          properties = {
-            "documentation",          --文档说明
-            "detail",                 --类型或签名信息
-            "additionalTextEdits",    --补全时的额外文本修改（比如自动添加 import）
-          },
-        },
-      }
+
+      --capabilities.textDocument.completion.completionItem = {
+      --  documentationFormat     = { "markdown", "plaintext" },   --告诉服务器可以返回 Markdown 格式的说明
+      --  snippetSupport          = true,                          --支持 snippet 占位符
+      --  preselectSupport        = true,                          --支持自动预选补全项
+      --  insertReplaceSupport    = true,                          --支持插入和替换模式的补全
+      --  labelDetailsSupport     = true,                          --补全标签支持附加信息
+      --  deprecatedSupport       = true,                          --支持标记废弃的补全项
+      --  commitCharactersSupport = true,                          --支持 commit 字符
+      --  tagSupport              = { valueSet = { 1 } },          --支持标签标记，这里 { valueSet = {1} } 通常表示废弃标签。
+      --  resolveSupport = {            --当需要补全项的更多信息时，可以请求额外字段：
+      --    properties = {
+      --      "documentation",          --文档说明
+      --      "detail",                 --类型或签名信息
+      --      "additionalTextEdits",    --补全时的额外文本修改（比如自动添加 import）
+      --    },
+      --  },
+      --}
+
+      local ok, cmp = pcall(require, "cmp_nvim_lsp")
+      if ok then
+        capabilities = cmp.default_capabilities(capabilities)
+      end
 
       ------------------------------------------------
       -- 禁用 semanticTokens
@@ -76,6 +100,7 @@ return {
             "--background-index",
             "--clang-tidy",
             "--completion-style=detailed",
+            "--all-scopes-completion",
             "--fallback-style=Google",
             "--header-insertion=never",
             "--pch-storage=memory",
@@ -87,7 +112,8 @@ return {
               ".clangd-root",
               ".git",
               "compile_commands.json",
-              "Android.mk"
+              "Android.mk",
+              "Android.bp"
             )(fname) or vim.loop.cwd()
           end,
         },
@@ -102,14 +128,19 @@ return {
           },
         },
 
-        cmake = {},
+        cmake    = {},  -- make
+        pyright  = {},  -- python
+        bashls   = {},  -- bash
+        jdtls    = {},  -- java
+        jsonls   = {},  -- json
+        lemminx  = {},  -- xml
       }
 
       ------------------------------------------------
       -- diagnostics 显示
       ------------------------------------------------
       local diagnostics = {
-        virtual_text = { prefix = "●", spacing = 2 },
+        virtual_text = { prefix = "●", spacing = 2 , source = "if_many",},
         signs = true,              --显示左侧符号
         underline = true,          --错误显示下划线
         update_in_insert = false,  --插入模式不更新诊断
@@ -143,7 +174,10 @@ return {
           cfg.on_attach = opts.on_attach
           cfg.on_init = opts.on_init
           cfg.capabilities = opts.capabilities
-          cfg.flags = { debounce_text_changes = 150 }
+          cfg.flags = {
+            debounce_text_changes = 150,
+            allow_incremental_sync = true,
+          }
 
           lspconfig[server_name].setup(cfg)
         end,

@@ -1,0 +1,42 @@
+
+
+#常用命令：打包&&拆分：
+tar -cJf NvimLua.tar.xz --exclude-vcs NvimLua
+
+split -b 40M mason.tar.xz mason.tar.xz.part
+
+
+
+#查看当前目录软连接：
+find . -type l -exec ls -l {} \;
+
+#查看当前目录失效的软连接：
+find . -xtype l -exec ls -l {} \;
+
+
+
+#关于Mason打包方式：
+鉴于Mason软连接太多，发布时需要修改为相对路径。
+
+  在将家目录的.local/share/nvim/mason 拷贝过来之后，
+  执行 0.ConvertPackageLsToRealtivePaths.sh 将 ~/Downloads/NvimLua/ 下面
+  .local/share/nvim/mason/ 里面的相关软连接替换为相对路径。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

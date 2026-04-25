@@ -145,6 +145,8 @@ export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border"
 export PATH=~/.config/lib/ripgrep-14.1.1-x86_64-unknown-linux-musl/:${PATH}
 #Fd
 export PATH=~/.config/lib/fd-v10.2.0-x86_64-unknown-linux-gnu/:${PATH}
+#NodeJs
+export PATH=~/.config/lib/node-v20.11.1-linux-x64/bin/:${PATH}
 
 
 #key-bind

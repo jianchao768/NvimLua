@@ -44,10 +44,11 @@ backup_if_exist "$HOME/.config/nvim"
 mkdir -p "$HOME/.config"
 cp -r .config/nvim "$HOME/.config/"
 
-# 5. 备份并复制 nvim 配置
+# 5. 备份并复制 工具文件
 backup_if_exist "$HOME/.config/lib/"
 mkdir -p "$HOME/.config"
 cp -r .config/lib/ "$HOME/.config/"
+tar -xJf "$HOME/.config/lib/node-v20.11.1-linux-x64.tar.xz" -C "$HOME/.config/lib/"
 
 # 6. 备份并复制 .local/share 目录下的内容（备份整个 ~/.local/share）
 #backup_if_exist "$HOME/.local/share/fonts/"  -- 暂时不备份，防止删除原有字体
@@ -56,15 +57,20 @@ mkdir -p "$HOME/.local/share"
 cp -r .local/share/fonts "$HOME/.local/share/"
 cp -r .local/share/nvim "$HOME/.local/share/"
 
+# 解压字体
 tar -xJf ~/.local/share/fonts/UbuntuMono/UbuntuMono.tar.xz -C ~/.local/share/fonts/UbuntuMono/
+# 解压插件
 tar -xJf ~/.local/share/nvim/lazy.tar.xz -C ~/.local/share/nvim/
+# 解压LSP
+cat ~/.local/share/nvim/mason.tar.xz.part.a* > ~/.local/share/nvim/mason.tar.xz
+tar -xJf ~/.local/share/nvim/mason.tar.xz -C ~/.local/share/nvim/
 
 # 7. 恢复clangd 
-cat ~/.local/share/nvim/mason/packages/clangd/clangd_20.1.0/bin/clangd.tar.xz.part_a* > ~/.local/share/nvim/mason/packages/clangd/clangd_20.1.0/bin/clangd.tar.xz
-tar -xJf ~/.local/share/nvim/mason/packages/clangd/clangd_20.1.0/bin/clangd.tar.xz -C ~/.local/share/nvim/mason/packages/clangd/clangd_20.1.0/bin/
+cat ~/.local/share/nvim/mason/packages/clangd/clangd_21.1.8/bin/clangd.tar.xz.part_a* > ~/.local/share/nvim/mason/packages/clangd/clangd_21.1.8/bin/clangd.tar.xz
+tar -xJf ~/.local/share/nvim/mason/packages/clangd/clangd_21.1.8/bin/clangd.tar.xz -C ~/.local/share/nvim/mason/packages/clangd/clangd_21.1.8/bin/
 
-ln -sf ~/.local/share/nvim/mason/packages/clangd/clangd_20.1.0/bin/clangd ~/.local/share/nvim/mason/bin/clangd
-ln -sf ~/.local/share/nvim/mason/packages/clangd/mason-schemas/lsp.json   ~/.local/share/nvim/mason/share/mason-schemas/lsp/clangd.json
+#ln -sf ~/.local/share/nvim/mason/packages/clangd/clangd_21.1.8/bin/clangd ~/.local/share/nvim/mason/bin/clangd
+#ln -sf ~/.local/share/nvim/mason/packages/clangd/mason-schemas/lsp.json   ~/.local/share/nvim/mason/share/mason-schemas/lsp/clangd.json
 
 # ---------------------------------------------------------------------------------------------------------------------
 # 8. 添加定时清理 lsp.log，防止占用过多内存
