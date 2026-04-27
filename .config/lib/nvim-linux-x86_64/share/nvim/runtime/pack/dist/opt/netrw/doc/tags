@@ -3,7 +3,6 @@
 :Explore	netrw.txt	/*:Explore*
 :Hexplore	netrw.txt	/*:Hexplore*
 :Lexplore	netrw.txt	/*:Lexplore*
-:NetrwClean	netrw.txt	/*:NetrwClean*
 :Nexplore	netrw.txt	/*:Nexplore*
 :Nr	netrw.txt	/*:Nr*
 :Nread	netrw.txt	/*:Nread*
@@ -45,7 +44,6 @@ g:netrw_dav_cmd	netrw.txt	/*g:netrw_dav_cmd*
 g:netrw_decompress	netrw.txt	/*g:netrw_decompress*
 g:netrw_dirhistmax	netrw.txt	/*g:netrw_dirhistmax*
 g:netrw_dynamic_maxfilenamelen	netrw.txt	/*g:netrw_dynamic_maxfilenamelen*
-g:netrw_errorlvl	netrw.txt	/*g:netrw_errorlvl*
 g:netrw_fastbrowse	netrw.txt	/*g:netrw_fastbrowse*
 g:netrw_fetch_cmd	netrw.txt	/*g:netrw_fetch_cmd*
 g:netrw_ffkeep	netrw.txt	/*g:netrw_ffkeep*
@@ -85,7 +83,6 @@ g:netrw_maxfilenamelen	netrw.txt	/*g:netrw_maxfilenamelen*
 g:netrw_menu	netrw.txt	/*g:netrw_menu*
 g:netrw_mkdir_cmd	netrw.txt	/*g:netrw_mkdir_cmd*
 g:netrw_mousemaps	netrw.txt	/*g:netrw_mousemaps*
-g:netrw_nobeval	netrw.txt	/*g:netrw_nobeval*
 g:netrw_preview	netrw.txt	/*g:netrw_preview*
 g:netrw_rcp_cmd	netrw.txt	/*g:netrw_rcp_cmd*
 g:netrw_remote_mkdir	netrw.txt	/*g:netrw_remote_mkdir*
@@ -111,11 +108,9 @@ g:netrw_special_syntax	netrw.txt	/*g:netrw_special_syntax*
 g:netrw_ssh_browse_reject	netrw.txt	/*g:netrw_ssh_browse_reject*
 g:netrw_ssh_cmd	netrw.txt	/*g:netrw_ssh_cmd*
 g:netrw_sshport	netrw.txt	/*g:netrw_sshport*
-g:netrw_suppress_gx_mesg	netrw.txt	/*g:netrw_suppress_gx_mesg*
 g:netrw_timefmt	netrw.txt	/*g:netrw_timefmt*
 g:netrw_tmpfile_escape	netrw.txt	/*g:netrw_tmpfile_escape*
 g:netrw_uid	netrw.txt	/*g:netrw_uid*
-g:netrw_use_errorwindow	netrw.txt	/*g:netrw_use_errorwindow*
 g:netrw_use_noswf	netrw.txt	/*g:netrw_use_noswf*
 g:netrw_use_nt_rcp	netrw.txt	/*g:netrw_use_nt_rcp*
 g:netrw_usetab	netrw.txt	/*g:netrw_usetab*
@@ -176,7 +171,6 @@ netrw-call	netrw.txt	/*netrw-call*
 netrw-cb	netrw.txt	/*netrw-cb*
 netrw-cd	netrw.txt	/*netrw-cd*
 netrw-chgup	netrw.txt	/*netrw-chgup*
-netrw-clean	netrw.txt	/*netrw-clean*
 netrw-contents	netrw.txt	/*netrw-contents*
 netrw-copyright	netrw.txt	/*netrw-copyright*
 netrw-cr	netrw.txt	/*netrw-cr*
@@ -314,7 +308,6 @@ netrw-rightmouse	netrw.txt	/*netrw-rightmouse*
 netrw-s	netrw.txt	/*netrw-s*
 netrw-s-cr	netrw.txt	/*netrw-s-cr*
 netrw-settings	netrw.txt	/*netrw-settings*
-netrw-settings-window	netrw.txt	/*netrw-settings-window*
 netrw-sexplore	netrw.txt	/*netrw-sexplore*
 netrw-sort	netrw.txt	/*netrw-sort*
 netrw-sort-sequence	netrw.txt	/*netrw-sort-sequence*

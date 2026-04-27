@@ -85,7 +85,7 @@ return {
       -- 禁用 semanticTokens
       ------------------------------------------------
       local function on_init(client, _)
-        if client.supports_method("textDocument/semanticTokens") then
+        if client:supports_method("textDocument/semanticTokens") then
           client.server_capabilities.semanticTokensProvider = nil
         end
       end
@@ -105,6 +105,7 @@ return {
             "--header-insertion=never",
             "--pch-storage=memory",
             "-j=8",
+            "--log=error",
           },
           filetypes = { "c", "cpp", "objc", "objcpp" },
           root_dir = function(fname)
@@ -168,19 +169,21 @@ return {
       -- 配置 diagnostics
       vim.diagnostic.config(opts.diagnostics)
 
-      mason_lspconfig.setup_handlers({
-        function(server_name)
-          local cfg = opts.servers[server_name] or {}
-          cfg.on_attach = opts.on_attach
-          cfg.on_init = opts.on_init
-          cfg.capabilities = opts.capabilities
-          cfg.flags = {
-            debounce_text_changes = 150,
-            allow_incremental_sync = true,
-          }
+      mason_lspconfig.setup({
+        handlers = {
+          function(server_name)
+            local cfg = opts.servers[server_name] or {}
+            cfg.on_attach = opts.on_attach
+            cfg.on_init = opts.on_init
+            cfg.capabilities = opts.capabilities
+            cfg.flags = {
+              debounce_text_changes = 150,
+              allow_incremental_sync = true,
+            }
 
-          lspconfig[server_name].setup(cfg)
-        end,
+            lspconfig[server_name].setup(cfg)
+          end,
+        },
       })
     end,
   },
@@ -203,6 +206,23 @@ return {
   --        toggle_or_jump = "<CR>",
   --      },
   --    },
+  --  },
+  --},
+  --{
+  --  --------------------------
+  --  --- 更智能的LSP 函数ui ---
+  --  --------------------------
+  --  "folke/trouble.nvim",
+  --  dependencies = { "nvim-tree/nvim-web-devicons" },
+  --  keys = {
+  --    { "gr",         "<cmd>Trouble lsp_references focus=true<cr>",       desc = "LSP Go to References" },
+  --    { "gd",         "<cmd>Trouble lsp_definitions focus=true<cr>",      desc = "LSP Go to Definitions" },
+  --    { "gi",         "<cmd>Trouble lsp_implementations focus=true<cr>",  desc = "LSP Go to Implementations" },
+  --    { "<leader>ld", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "Diagnostics list diagnostics info(current buffer)" },
+  --  },
+  --  opts = {
+  --    auto_close = true,       -- auto close when there are no items
+  --    warn_no_results = false, -- show a warning when there are no results
   --  },
   --},
 }

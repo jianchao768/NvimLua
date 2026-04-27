@@ -45,7 +45,10 @@ return {
         component_separators = { left = "", right = "" },
         section_separators = { left = "", right = "" },
         globalstatus = true,
-        disabled_filetypes = { "alpha", "NvimTree", "toggleterm" },
+        disabled_filetypes = {
+          statusline = { "alpha", "NvimTree", "toggleterm", "tagbar", "aerial", "Outline"},
+          winbar     = { "alpha", "NvimTree", "toggleterm", "tagbar", "aerial", "Outline"},
+        },
         ignore_focus = { "NvimTree", "tagbar", "gitsigns-blame" },
         refresh = {
           statusline = 500,

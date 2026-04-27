@@ -3,6 +3,7 @@ return {
   --- Neovim Git集成插件，在nvim中提供git状态 ---
   -----------------------------------------------
   "lewis6991/gitsigns.nvim",
+  commit = "17ab794",
   --event = {"BufReadPre", "BufNewFile" },
   event = {"VeryLazy"},
   dependencies = { "nvim-lua/plenary.nvim" },
@@ -119,36 +120,34 @@ return {
     end)
 
     -- 安全封装函数
-    local function safe_show_commit()
+    local safe_show_commit = async.async(function()
       local win = api.nvim_get_current_win()
       local bufnr = api.nvim_get_current_buf()
       local bcache = cache[bufnr]
 
-      -- 确保缓存和blame数据存在
       if not bcache then
         vim.notify("Buffer not attached to gitsigns", vim.log.levels.WARN)
         return
       end
 
-      -- 确保blame数据已加载
       if not bcache.blame then
         bcache:get_blame()
-        if not bcache.blame then
-          vim.notify("Failed to get blame data", vim.log.levels.ERROR)
-          return
-        end
       end
 
-      -- 确保当前行有blame数据
+      if not bcache.blame then
+        vim.notify("Failed to get blame data", vim.log.levels.ERROR)
+        return
+      end
+
       local cursor = api.nvim_win_get_cursor(win)[1]
+
       if not bcache.blame[cursor] then
         vim.notify("No blame info for current line", vim.log.levels.WARN)
         return
       end
 
-      -- 调用内部show_commit函数
       show_commit(win, 'vsplit', bcache)
-    end
+    end)
 
 
     vim.keymap.set("n", "[g", ":Gitsigns prev_hunk<CR>", { noremap = true, silent = true })

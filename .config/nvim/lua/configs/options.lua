@@ -6,7 +6,7 @@ vim.o.exrc = true                    -- 允许加载当前目录的 `.nvimrc` �
 vim.o.secure = false                 -- 允许 `.exrc` 执行某些命令
 vim.o.autoread = true                -- 文件被外部修改后，自动加载
 vim.bo.autoread = true
-vim.opt.clipboard = "unnamedplus"    -- 
+vim.opt.clipboard = "unnamedplus"    -- 使用系统剪贴板（需要系统支持 xclip/wl-copy）
 
 vim.opt.shiftwidth = 2               -- 自动缩进的空格数
 vim.opt.tabstop = 4                  -- Tab 显示的空格数
@@ -42,8 +42,16 @@ vim.opt.showmode = false             -- 不显示 --INSERT-- 等模式信息
 vim.opt.list = true                  -- 显示特殊字符
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
---vim.g.loaded_netrw = 1             --打开会导致fzf_projects切换后不自动打开文件树
---vim.g.loaded_netrwPlugin = 1       --打开会导致fzf_projects切换后不自动打开文件树
+-- 平滑滚动（Neovim 0.9+ 新特性）
+-- 当你用 Ctrl-D/U 滚动时，画面不再生硬地跳动 -- 好像没效果
+if vim.opt.smoothscroll then
+    vim.opt.smoothscroll = true
+end
+
+vim.lsp.log.set_level(vim.log.levels.ERROR) -- 降低日志等级
+
+--vim.g.loaded_netrw = 1             -- 打开会导致fzf_projects切换后不自动打开文件树
+--vim.g.loaded_netrwPlugin = 1       -- 打开会导致fzf_projects切换后不自动打开文件树
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_python_provider = 0
@@ -63,3 +71,20 @@ local is_windows = vim.fn.has "win32" ~= 0
 local sep = is_windows and "\\" or "/"
 local delim = is_windows and ";" or ":"
 vim.env.PATH = table.concat({ vim.fn.stdpath "data", "mason", "bin" }, sep) .. delim .. vim.env.PATH
+
+
+-- 清理lsp.log，防止过大
+local log_path = vim.lsp.log.get_filename()
+local f = io.open(log_path, "r")
+if f then
+    local size = f:seek("end")
+    f:close()
+    if size > 1024 * 1024 * 50 then -- 大于 50MB 时触发
+        -- 以 "w" 模式打开文件会直接将其内容清空（截断为 0）
+        local cleanup = io.open(log_path, "w")
+        if cleanup then
+            cleanup:close()
+        end
+    end
+end
+

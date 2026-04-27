@@ -1,10 +1,11 @@
 local M = {}
-local min_version = '3.7'
+local min_version = '3.9'
 local s_err ---@type string?
 local s_host ---@type string?
 
 local python_candidates = {
   'python3',
+  'python3.14',
   'python3.13',
   'python3.12',
   'python3.11',
@@ -81,6 +82,10 @@ function M.detect_by_module(module)
 
   if python_exe ~= '' then
     return vim.fn.exepath(vim.fn.expand(python_exe, true)), nil
+  end
+
+  if vim.fn.executable('pynvim-python') == 1 then
+    return 'pynvim-python'
   end
 
   local errors = {}

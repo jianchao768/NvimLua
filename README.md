@@ -1,5 +1,5 @@
 
-![show](./assets/show_sample5.png)
+![show](./assets/show_sample6.png)
 
 ### PS:
 ```
@@ -8,6 +8,11 @@ NvimLua 配置main版本，打开lsp支持
 ```
 
 ### TODO:
+
+```
+./install_config.sh
+```
+or
 
 ```bash
 1.解压插件/字体
@@ -25,14 +30,4 @@ NvimLua 配置main版本，打开lsp支持
   cd .local/share/nvim/mason/packages/clangd/clangd_20.1.0/bin/
   cat clangd.tar.xz.part_a* > clangd.tar.xz
   tar -xJvf clangd.tar.xz
-  更新软连接:
-  ln -s ~/.local/share/nvim/mason/packages/clangd/clangd_20.1.0/bin/clangd ~/.local/share/nvim/mason/bin/clangd
-  ln -s ~/.local/share/nvim/mason/packages/clangd/mason-schemas/lsp.json   ~/.local/share/nvim/mason/share/mason-schemas/lsp/clangd.json
 ```
-
-or
-
-```
-./install_config.sh
-```
-
